@@ -23,7 +23,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
              radial-gradient(ellipse 60% 40% at 80% 90%,rgba(0,229,195,.04) 0%,transparent 50%)}
 .wrap{max-width:1440px;margin:0 auto;padding:0 20px 48px;position:relative;z-index:1}
 
-/* ── TOPBAR ── */
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:22px 0 0;gap:16px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:12px}
 .logo-icon{width:40px;height:40px;background:var(--purple);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;box-shadow:0 0 24px rgba(145,71,255,.55)}
@@ -31,50 +30,21 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .logo-text span{color:var(--pl)}
 .logo-sub{font-size:11px;color:var(--muted);margin-top:2px}
 .topbar-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-
-/* status pill */
 .status-pill{display:flex;align-items:center;gap:7px;background:var(--panel);border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-family:var(--mono);font-size:11px}
 .status-dot{width:7px;height:7px;border-radius:50%;transition:background .4s}
 .status-dot.ok{background:var(--green);animation:blink 2s infinite}
-.status-dot.loading{background:var(--gold);animation:spin-dot 1s infinite}
+.status-dot.loading{background:var(--gold);animation:blink .6s infinite}
 .status-dot.err{background:var(--red)}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
-@keyframes spin-dot{0%,100%{opacity:1}50%{opacity:.2}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.cd-num{color:var(--green);font-weight:600;min-width:22px;text-align:center}
 .status-txt{color:var(--muted2)}
 .status-txt strong{color:var(--text)}
-.cd-num{color:var(--green);font-weight:600;min-width:22px;text-align:center}
 
-.link-btn{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;font-weight:600;padding:6px 13px;border-radius:100px;text-decoration:none;transition:all .2s;border:1px solid}
-.link-btn.gold{background:rgba(255,203,71,.08);border-color:rgba(255,203,71,.25);color:var(--gold)}
-.link-btn.gold:hover{background:rgba(255,203,71,.16)}
-.link-btn.purple{background:rgba(145,71,255,.12);border-color:rgba(145,71,255,.3);color:var(--pl)}
-.link-btn.purple:hover{background:rgba(145,71,255,.2)}
-
-/* ── SETUP GUIDE ── */
-.setup-guide{background:var(--panel);border:1px solid rgba(145,71,255,.25);border-radius:var(--r2);padding:24px 28px;margin-top:18px;position:relative;overflow:hidden}
-.setup-guide::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--teal))}
-.setup-title{font-size:16px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px}
-.setup-sub{font-size:12px;color:var(--muted2);margin-bottom:20px;line-height:1.6}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.step{background:var(--panel2);border:1px solid var(--border);border-radius:var(--r);padding:16px}
-.step-num{font-family:var(--mono);font-size:10px;color:var(--purple);font-weight:700;letter-spacing:.1em;margin-bottom:8px}
-.step-title{font-size:13px;font-weight:700;margin-bottom:6px}
-.step-body{font-size:11px;color:var(--muted2);line-height:1.7}
-.step-body code{font-family:var(--mono);font-size:10px;background:rgba(255,255,255,.08);padding:1px 5px;border-radius:3px;color:var(--teal)}
-.step-body a{color:var(--purple-light,#bf94ff);text-decoration:none}
-.step-body a:hover{text-decoration:underline}
-.env-block{background:#0a0c12;border:1px solid var(--border2);border-radius:8px;padding:12px 14px;margin-top:10px;font-family:var(--mono);font-size:11px;color:var(--teal);line-height:1.8}
-.env-block .cm{color:var(--muted)}
-.collapse-btn{background:none;border:1px solid var(--border2);color:var(--muted2);font-family:var(--sans);font-size:11px;font-weight:600;padding:5px 12px;border-radius:6px;cursor:pointer;transition:all .2s;float:right}
-.collapse-btn:hover{border-color:var(--purple);color:var(--pl)}
-
-/* ── SORT BAR ── */
 .sort-bar{display:flex;gap:6px;margin:18px 0 13px;flex-wrap:wrap}
 .sort-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 13px;border-radius:100px;border:1px solid var(--border2);background:var(--panel);color:var(--muted2);cursor:pointer;transition:all .2s}
 .sort-btn:hover{border-color:var(--purple);color:var(--pl)}
 .sort-btn.active{background:var(--purple);border-color:var(--purple);color:#fff;box-shadow:0 0 14px rgba(145,71,255,.4)}
 
-/* ── KPI ROW ── */
 .kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:13px}
 .kpi{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;position:relative;overflow:hidden;transition:transform .2s}
 .kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--teal))}
@@ -84,14 +54,12 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .kpi-v.purple{color:var(--pl)}.kpi-v.teal{color:var(--teal)}.kpi-v.gold{color:var(--gold)}.kpi-v.lv{color:var(--live)}.kpi-v.pink{color:var(--pink)}
 .kpi-s{font-size:11px;color:var(--muted);margin-top:4px}
 
-/* ── MAIN GRID ── */
 .main{display:grid;grid-template-columns:360px 1fr;gap:13px}
 
-/* ── LIST ── */
 .list-panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden}
 .list-head{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .list-head-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2)}
-.live-badge{font-family:var(--mono);font-size:11px;background:rgba(239,68,68,.15);color:var(--live);border:1px solid rgba(239,68,68,.3);border-radius:100px;padding:2px 10px;transition:all .4s}
+.live-badge{font-family:var(--mono);font-size:11px;background:rgba(239,68,68,.15);color:var(--live);border:1px solid rgba(239,68,68,.3);border-radius:100px;padding:2px 10px}
 
 .srow{display:grid;grid-template-columns:24px 38px 1fr auto;gap:9px;align-items:center;padding:10px 15px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;position:relative}
 .srow:last-child{border-bottom:none}
@@ -108,28 +76,24 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .ldot.on{display:block}
 @keyframes lp{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
 .llabel{font-family:var(--mono);font-size:9px;font-weight:700;color:var(--live);background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);border-radius:4px;padding:1px 5px;display:none}
-.llabel.on{display:inline;animation:fi .3s ease}
-@keyframes fi{from{opacity:0}to{opacity:1}}
+.llabel.on{display:inline}
 .stag{font-size:10px;color:var(--muted);margin-top:1px}
 .smet{text-align:right}
 .sval{font-family:var(--mono);font-size:12px;font-weight:600;white-space:nowrap}
 .sbar{height:3px;background:var(--panel2);border-radius:2px;margin-top:5px;overflow:hidden;min-width:54px}
 .sbar-fill{height:100%;border-radius:2px;transition:width .7s cubic-bezier(.4,0,.2,1)}
 
-/* ── RIGHT ── */
 .right{display:flex;flex-direction:column;gap:12px;min-width:0}
 
-/* ── DETAIL CARD ── */
 .dcard{background:var(--panel);border:1px solid var(--border);border-radius:var(--r2);padding:22px;position:relative;overflow:hidden;animation:fu .25s ease}
 @keyframes fu{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .dcard::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at top right,rgba(145,71,255,.055),transparent 55%);pointer-events:none}
 
 .lbanner{display:none;align-items:center;gap:9px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);border-radius:var(--r);padding:10px 14px;margin-bottom:14px}
-.lbanner.on{display:flex;animation:fi .3s ease}
+.lbanner.on{display:flex}
 .lbdot{width:8px;height:8px;border-radius:50%;background:var(--live);animation:lp 1.2s infinite;flex-shrink:0}
 .lbtxt{font-size:13px;font-weight:700;color:var(--live);flex:1}
 .lbv{font-family:var(--mono);font-size:12px;color:var(--muted2)}
-
 .tw-btn{display:inline-flex;align-items:center;gap:6px;background:var(--purple);color:#fff;font-size:12px;font-weight:700;padding:7px 14px;border-radius:8px;text-decoration:none;transition:all .2s;white-space:nowrap;box-shadow:0 0 14px rgba(145,71,255,.35)}
 .tw-btn:hover{background:#7c2ff5;transform:translateY(-1px)}
 .tw-btn svg{width:13px;height:13px;flex-shrink:0}
@@ -149,24 +113,21 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .bdg-t{background:rgba(0,229,195,.12);color:var(--teal);border:1px solid rgba(0,229,195,.25)}
 .bdg-g{background:rgba(255,203,71,.12);color:var(--gold);border:1px solid rgba(255,203,71,.25)}
 .bdg-n{background:rgba(61,220,132,.12);color:var(--green);border:1px solid rgba(61,220,132,.25)}
-.bdg-lv{background:rgba(239,68,68,.15);color:var(--live);border:1px solid rgba(239,68,68,.3);animation:fi .4s ease}
+.bdg-lv{background:rgba(239,68,68,.15);color:var(--live);border:1px solid rgba(239,68,68,.3)}
 .rpill{font-family:var(--mono);font-size:13px;font-weight:700;background:rgba(145,71,255,.15);color:var(--pl);border:1px solid rgba(145,71,255,.35);border-radius:10px;padding:7px 13px;flex-shrink:0}
 
-/* embed */
 .embed-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;gap:8px;flex-wrap:wrap}
 .embed-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-.embed-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
 .embed-wrap{position:relative;width:100%;padding-bottom:56.25%;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .embed-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
 .embed-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:155px;gap:10px;color:var(--muted2);padding:20px;background:var(--panel2);border-radius:var(--r);border:1px solid var(--border);text-align:center}
 .embed-ph-icon{font-size:30px;opacity:.5}
 .embed-ph-txt{font-size:12px;line-height:1.65}
-.open-btn{background:var(--purple);color:#fff;font-family:var(--sans);font-size:12px;font-weight:700;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;transition:all .2s;box-shadow:0 0 10px rgba(145,71,255,.3)}
+.open-btn{background:var(--purple);color:#fff;font-family:var(--sans);font-size:12px;font-weight:700;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;transition:all .2s}
 .open-btn:hover{background:#7c2ff5}
-.open-btn.lv{background:var(--live);box-shadow:0 0 10px rgba(239,68,68,.35)}
+.open-btn.lv{background:var(--live)}
 .open-btn.lv:hover{background:#dc2626}
 
-/* metrics */
 .mets{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
 .met{background:var(--panel2);border:1px solid var(--border);border-radius:var(--r);padding:11px 12px;transition:background .35s}
 .met.flash{animation:mf .65s ease}
@@ -178,16 +139,17 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .met-v.green{color:var(--green)}.met-v.gold{color:var(--gold)}.met-v.teal{color:var(--teal)}
 .met-v.purple{color:var(--pl)}.met-v.red{color:var(--red)}.met-v.lv{color:var(--live)}
 .met-s{font-size:10px;color:var(--muted);margin-top:2px}
+/* loading shimmer */
+.shimmer{background:linear-gradient(90deg,var(--panel2) 25%,rgba(255,255,255,.06) 50%,var(--panel2) 75%);background-size:200% 100%;animation:shimmer 1.2s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
 .dcdesc{font-size:12px;color:var(--muted2);line-height:1.75;background:var(--panel2);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;margin-bottom:12px}
 .mini-title{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
 
-/* charts row */
 .charts-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .ccard{background:var(--panel);border:1px solid var(--border);border-radius:var(--r2);padding:18px}
 .ctitle{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px}
 
-/* table */
 .tcard{background:var(--panel);border:1px solid var(--border);border-radius:var(--r2);padding:18px}
 table{width:100%;border-collapse:collapse;font-size:12px}
 th{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;text-align:left;padding:7px 9px;border-bottom:1px solid var(--border);font-weight:500}
@@ -196,6 +158,7 @@ tr:last-child td{border-bottom:none}
 tr:hover td{background:rgba(145,71,255,.04)}
 .tnum{font-family:var(--mono);font-size:11px}
 .gtag{font-family:var(--mono);font-size:10px;font-weight:600;padding:2px 6px;border-radius:5px;background:rgba(61,220,132,.12);color:var(--green)}
+.api-tag{font-family:var(--mono);font-size:9px;font-weight:600;padding:1px 5px;border-radius:4px;background:rgba(0,229,195,.12);color:var(--teal);margin-left:4px}
 
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:var(--bg)}
@@ -209,82 +172,23 @@ tr:hover td{background:rgba(145,71,255,.04)}
 <body>
 <div class="wrap">
 
-<!-- TOPBAR -->
 <div class="topbar">
   <div class="logo">
     <div class="logo-icon">🎮</div>
     <div>
       <div class="logo-text">Twitch <span>DE</span> Live Dashboard</div>
-      <div class="logo-sub">Top 10 deutsche Streamer · Echte API-Daten via Proxy</div>
+      <div class="logo-sub">Top 10 deutsche Streamer · Echte Live-Daten von Twitch API</div>
     </div>
   </div>
   <div class="topbar-right">
     <div class="status-pill">
       <div class="status-dot loading" id="sDot"></div>
-      <span class="status-txt" id="sTxt">Verbinde…</span>
+      <span class="status-txt" id="sTxt">Lade Daten…</span>
       <span class="cd-num" id="cd">60</span><span style="color:var(--muted)">s</span>
     </div>
-    <a class="link-btn gold" href="https://dev.twitch.tv/console" target="_blank">⚡ API Console</a>
-    <a class="link-btn purple" href="https://app.netlify.com" target="_blank">▲ Netlify</a>
   </div>
 </div>
 
-<!-- SETUP GUIDE (collapse-able) -->
-<div class="setup-guide" id="setupGuide">
-  <button class="collapse-btn" onclick="toggleSetup()">✕ Ausblenden</button>
-  <div class="setup-title">🚀 Setup in 4 Schritten — echte Live-Daten aktivieren</div>
-  <div class="setup-sub">Dieses Dashboard läuft als statische Seite auf Netlify. Der Proxy (Edge Function) holt die Twitch-Daten sicher auf dem Server und gibt sie ans Dashboard weiter. Dein API-Secret bleibt dabei niemals im Browser.</div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">SCHRITT 01</div>
-      <div class="step-title">Twitch App registrieren</div>
-      <div class="step-body">
-        Öffne <a href="https://dev.twitch.tv/console" target="_blank">dev.twitch.tv/console</a> → "Register your application"<br><br>
-        • Name: beliebig<br>
-        • OAuth Redirect URL: <code>http://localhost</code><br>
-        • Category: <code>Website Integration</code><br><br>
-        Danach: <strong>Client ID</strong> und <strong>Client Secret</strong> kopieren.
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">SCHRITT 02</div>
-      <div class="step-title">GitHub Repo erstellen</div>
-      <div class="step-body">
-        Lade die Dateien aus dem <code>twitch-live-proxy/</code>-Ordner in ein neues GitHub-Repository hoch.<br><br>
-        Struktur:<br>
-        <code>netlify/edge-functions/twitch-proxy.js</code><br>
-        <code>netlify.toml</code><br>
-        <code>public/index.html</code> ← diese Datei
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">SCHRITT 03</div>
-      <div class="step-title">Auf Netlify deployen</div>
-      <div class="step-body">
-        <a href="https://app.netlify.com" target="_blank">app.netlify.com</a> → "Add new site" → "Import from Git" → GitHub-Repo auswählen.<br><br>
-        Unter <strong>Site settings → Environment variables</strong> setzen:
-        <div class="env-block">
-          <span class="cm"># Deine Twitch-Zugangsdaten:</span><br>
-          TWITCH_CLIENT_ID = abc123…<br>
-          TWITCH_CLIENT_SECRET = xyz789…
-        </div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">SCHRITT 04</div>
-      <div class="step-title">Proxy-URL eintragen</div>
-      <div class="step-body">
-        Nach dem Deploy erhältst du eine URL wie:<br>
-        <code>https://mein-dashboard.netlify.app</code><br><br>
-        Im Code dieser Datei die Zeile:<br>
-        <code>const PROXY = '/api/twitch';</code><br><br>
-        bleibt so — der relative Pfad funktioniert automatisch. Fertig! 🎉
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SORT BAR -->
 <div class="sort-bar">
   <button class="sort-btn active" onclick="setSort('followers',this)">👥 Follower</button>
   <button class="sort-btn" onclick="setSort('growth',this)">📈 Zuwachs 2024</button>
@@ -295,16 +199,14 @@ tr:hover td{background:rgba(145,71,255,.04)}
   <button class="sort-btn" onclick="setSort('watchtime',this)">⌚ Watchtime</button>
 </div>
 
-<!-- KPI ROW -->
 <div class="kpi-row">
   <div class="kpi"><div class="kpi-l">🔴 Jetzt LIVE</div><div class="kpi-v lv" id="kLive">–</div><div class="kpi-s">von 10 Streamern</div></div>
   <div class="kpi"><div class="kpi-l">Live-Zuschauer</div><div class="kpi-v teal" id="kViews">–</div><div class="kpi-s">gerade gesamt</div></div>
-  <div class="kpi"><div class="kpi-l">Gesamt Follower</div><div class="kpi-v purple">22,2 Mio.</div><div class="kpi-s">Top 10 kombiniert</div></div>
-  <div class="kpi"><div class="kpi-l">Zuwachs 2024</div><div class="kpi-v gold">+3,5 Mio.</div><div class="kpi-s">Neue Follower</div></div>
-  <div class="kpi"><div class="kpi-l">Watchtime 2024</div><div class="kpi-v pink">470 Mio. h</div><div class="kpi-s">Gesehene Stunden</div></div>
+  <div class="kpi"><div class="kpi-l">Gesamt Follower</div><div class="kpi-v purple" id="kFollowers">–</div><div class="kpi-s">Top 10 live</div></div>
+  <div class="kpi"><div class="kpi-l">Ø Abonnenten</div><div class="kpi-v gold" id="kSubs">–</div><div class="kpi-s">Durchschnitt</div></div>
+  <div class="kpi"><div class="kpi-l">API Status</div><div class="kpi-v teal" id="kApi">–</div><div class="kpi-s" id="kApiSub">Verbinde…</div></div>
 </div>
 
-<!-- MAIN -->
 <div class="main">
   <div class="list-panel">
     <div class="list-head">
@@ -316,209 +218,230 @@ tr:hover td{background:rgba(145,71,255,.04)}
   <div class="right">
     <div id="dCard"></div>
     <div class="charts-row">
-      <div class="ccard"><div class="ctitle">Follower Ranking</div><div style="position:relative;height:200px"><canvas id="cF" role="img" aria-label="Follower"></canvas></div></div>
-      <div class="ccard"><div class="ctitle">Ø Zuschauer vs. Peak</div><div style="position:relative;height:200px"><canvas id="cV" role="img" aria-label="Zuschauer vs Peak"></canvas></div></div>
+      <div class="ccard"><div class="ctitle">Follower Ranking <span class="api-tag">LIVE API</span></div><div style="position:relative;height:200px"><canvas id="cF"></canvas></div></div>
+      <div class="ccard"><div class="ctitle">Ø Zuschauer vs. Peak</div><div style="position:relative;height:200px"><canvas id="cV"></canvas></div></div>
     </div>
     <div class="charts-row">
-      <div class="ccard"><div class="ctitle">Follower-Zuwachs 2024</div><div style="position:relative;height:185px"><canvas id="cG" role="img" aria-label="Zuwachs"></canvas></div></div>
-      <div class="ccard"><div class="ctitle">Streamzeit 2024</div><div style="position:relative;height:185px"><canvas id="cS" role="img" aria-label="Streamzeit"></canvas></div></div>
+      <div class="ccard"><div class="ctitle">Follower-Zuwachs 2024</div><div style="position:relative;height:185px"><canvas id="cG"></canvas></div></div>
+      <div class="ccard"><div class="ctitle">Streamzeit 2024</div><div style="position:relative;height:185px"><canvas id="cS"></canvas></div></div>
     </div>
     <div class="tcard">
-      <div class="ctitle">Vollständige Kennzahlen — Datenbasis 2024 + Live-Status</div>
+      <div class="ctitle">Vollständige Kennzahlen <span class="api-tag">LIVE API</span></div>
       <div style="overflow-x:auto">
         <table><thead><tr>
-          <th>#</th><th>Streamer</th><th>Follower</th><th>Zuwachs</th>
-          <th>Ø Zuschauer</th><th>Peak</th><th>Abos</th><th>Stream h</th><th>Watchtime</th><th>🔴 Live</th>
+          <th>#</th><th>Streamer</th><th>Follower <span class="api-tag">live</span></th><th>Zuwachs</th>
+          <th>Ø Zuschauer</th><th>Peak</th><th>Abos <span class="api-tag">live</span></th><th>Stream h</th><th>Watchtime</th><th>🔴 Live</th>
         </tr></thead><tbody id="tBody"></tbody></table>
       </div>
     </div>
   </div>
 </div>
-</div><!-- /wrap -->
+</div>
 
 <script>
-// ─── KONFIGURATION ───────────────────────────────────────────
-// Wenn auf Netlify deployed: relativer Pfad reicht.
-// Lokal testen: PROXY = 'https://DEINE-SITE.netlify.app/api/twitch'
 const PROXY = '/api/twitch';
+const CHANNELS = ['montanablack88','trymacs','papaplatte','eliasn97','bastighg','therealknossi','gronkh','zarbex','handofblood','rewinside'];
 
-// Twitch-Kanalnamen der Top 10 deutschen Streamer
-const CHANNELS = [
-  'montanablack88','trymacs','papaplatte','eliasn97',
-  'bastighg','therealknossi','gronkh','zarbex','handofblood','rewinside'
-];
-
-// Statische Stammdaten (Historik 2024 — von Twitch API nicht abrufbar)
+// Statische Basisdaten (historisch, nicht von API abrufbar)
 const BASE = {
-  montanablack88:  {name:'MontanaBlack', real:'Marcel Eris, 36',    em:'🖤', bg:'#1a1010', c:'#ff5e5e', cat:'Just Chatting / IRL',     since:2013, followers:5720000, growth:180000,  subscribers:12000, avgViewers:22000,  peakViewers:257202,  hoursStreamed:890,  watchtime:50,  tags:['Partner','IRL','Just Chatting'], tcl:['bdg-p','bdg-t','bdg-g'], desc:'Marcel Eris ist seit Jahren das Gesicht des deutschen Twitch. Am 22. Dez. 2024 stellte er mit 257.202 gleichzeitigen Zuschauern seinen Kanalrekord auf. Gründer der Energie-Drink-Marke Gönrgy.', mo:[14000,15000,18000,20000,19000,22000,24000,28000,21000,25000,30000,45000], pk:'22. Dez 2024'},
-  trymacs:         {name:'Trymacs',      real:'Max Stemmler, 28',   em:'🏆', bg:'#101a10', c:'#3ddc84', cat:'Gaming / Events',          since:2016, followers:4100000, growth:320000,  subscribers:15000, avgViewers:19000,  peakViewers:700000,  hoursStreamed:1400, watchtime:95,  tags:['Partner','Gaming','Events'],      tcl:['bdg-p','bdg-t','bdg-n'], desc:'Hält den deutschen Allzeit-Peak-Rekord: Ein Minecraft-Event 2024 zog über 700.000 gleichzeitige Zuschauer an. Mitgründer der Pizza-Marke "Happy Slice" und des Food-Startups Lanch.', mo:[12000,13000,16000,18000,22000,30000,25000,18000,19000,21000,23000,28000], pk:'Minecraft-Event'},
-  papaplatte:      {name:'Papaplatte',   real:'Kevin Teller, 27',   em:'🚐', bg:'#101420', c:'#9147ff', cat:'IRL / Just Chatting',       since:2013, followers:3100000, growth:350000,  subscribers:33912, avgViewers:30000,  peakViewers:301000,  hoursStreamed:1800, watchtime:130, tags:['Partner','IRL','#1 Abos'],        tcl:['bdg-p','bdg-t','bdg-g'], desc:'Mit 33.912 aktiven Abonnenten der meistabonnierte deutsche Streamer. Watchtime ≈130 Mio. Std. 2024 – zweithöchster Wert aller DE-Streamer.', mo:[18000,22000,28000,32000,35000,38000,40000,36000,31000,28000,30000,34000], pk:'Edeltour-Event'},
-  eliasn97:        {name:'EliasN97',     real:'Elias Nerlich, 27',  em:'⚽', bg:'#0a1420', c:'#57c8ff', cat:'FIFA / Fußball',            since:2018, followers:2800000, growth:1300000, subscribers:28000, avgViewers:37500,  peakViewers:208614,  hoursStreamed:1480, watchtime:140, tags:['Partner','FIFA/FC','E-Sport'],    tcl:['bdg-p','bdg-t','bdg-t'], desc:'Höchste Watchtime aller DE-Streamer 2024 (≈140 Mio. Std.) und größter Follower-Zuwachs: +1,3 Mio. Ex-FIFA-Profi, heute Unternehmer (Elevate, Parfüm-Linie).', mo:[28000,30000,33000,40000,42000,38000,45000,50000,46000,35000,32000,38000], pk:'Dez. 2024'},
-  bastighg:        {name:'BastiGHG',     real:'Basti G., 27',       em:'⛏️', bg:'#101a14', c:'#00e5c3', cat:'Minecraft / Gaming',        since:2019, followers:2400000, growth:280000,  subscribers:18000, avgViewers:14000,  peakViewers:88507,   hoursStreamed:1550, watchtime:55,  tags:['Partner','Minecraft','Gaming'],   tcl:['bdg-p','bdg-n','bdg-t'], desc:'Einer der aktivsten deutschen Streamer – 1.550+ Streamstunden 2024. Persönlicher Rekord: 88.507 Zuschauer bei den Stream Awards im Dezember 2024.', mo:[8000,9000,11000,13000,15000,16000,18000,16000,13000,12000,14000,16000], pk:'Stream Awards'},
-  therealknossi:   {name:'Knossi',       real:'Jens Knossalla, 38', em:'👑', bg:'#201a00', c:'#ffcb47', cat:'Talk / IRL / Events',       since:2014, followers:2200000, growth:90000,   subscribers:10000, avgViewers:14769,  peakViewers:336000,  hoursStreamed:680,  watchtime:36,  tags:['Partner','Talk','TV-Star'],       tcl:['bdg-p','bdg-g','bdg-t'], desc:'Der "König des Internets" – war 2020 kurzzeitig Twitch #1 weltweit. 2024 live verlobt vor 11.000 Zuschauern. Horror-Kamp: 336.000 Zuschauer. Mitgründer Happy Slice Pizza.', mo:[10000,11000,13000,15000,18000,14000,12000,13000,14000,16000,15000,17000], pk:'Horror-Kamp'},
-  gronkh:          {name:'Gronkh',       real:'Erik Range, 45',     em:'🎭', bg:'#1a100a', c:'#ff8c42', cat:"Gaming / Let's Play",       since:2010, followers:1900000, growth:50000,   subscribers:7500,  avgViewers:18993,  peakViewers:62000,   hoursStreamed:1100, watchtime:42,  tags:['Partner','Legende','Gaming'],     tcl:['bdg-p','bdg-g','bdg-t'], desc:'Streaming-Legende: 2014–2016 meistabonnierter YouTuber Deutschlands. 2024 streamte er den Computerspielpreis mit mehr Zuschauern als der offizielle Event-Stream.', mo:[15000,16000,18000,22000,20000,19000,18000,17000,19000,21000,20000,22000], pk:'Computerspielpreis'},
-  zarbex:          {name:'Zarbex',       real:'Dominic Z., ~25',    em:'🌍', bg:'#0a1a18', c:'#4ade80', cat:'IRL / Travel',              since:2020, followers:1200000, growth:550000,  subscribers:8500,  avgViewers:13000,  peakViewers:59000,   hoursStreamed:2100, watchtime:30,  tags:['Partner','IRL','Newcomer 2024'], tcl:['bdg-p','bdg-t','bdg-n'], desc:'Großer Durchbruch 2024: +550k Follower. Mit 2.100 Streamstunden der aktivste Streamer der deutschen Top 10. Bekannt für extrem lange IRL-Streams und Storage Hunter.', mo:[2000,3000,5000,8000,11000,14000,16000,15000,12000,13000,14000,15000], pk:'IRL-Event'},
-  handofblood:     {name:'HandOfBlood',  real:'Max Knabe, 34',      em:'🩸', bg:'#200a0a', c:'#ff6bcd', cat:'Gaming / Talk',             since:2016, followers:1650000, growth:120000,  subscribers:11000, avgViewers:16000,  peakViewers:95000,   hoursStreamed:1200, watchtime:42,  tags:['Partner','Gaming','LoL'],         tcl:['bdg-p','bdg-t','bdg-t'], desc:'Bekannt für League of Legends-Content. 2024 starkes Wachstum (+2,3 Mio. Watchtime-Zuwachs laut SullyGnome). Produziert auch Content für ServusTV.', mo:[10000,11000,13000,16000,18000,20000,19000,17000,15000,16000,17000,18000], pk:'LoL-Turnier'},
-  rewinside:       {name:'Rewinside',    real:'Sebastian M., 32',   em:'🎬', bg:'#100a1a', c:'#bf94ff', cat:'Gaming / Challenges',       since:2015, followers:1800000, growth:75000,   subscribers:6000,  avgViewers:9500,   peakViewers:55000,   hoursStreamed:2000, watchtime:26,  tags:['Partner','Gaming','Marathon'],   tcl:['bdg-p','bdg-t','bdg-g'], desc:'Bekannt für Stream-Marathons: 2024 streamte er 72 Stunden ohne Unterbrechung. Neben Twitch erfolgreicher YouTuber. Einer der aktivsten deutschen Streamer.', mo:[8000,9000,10000,10500,11000,12000,11500,10000,9500,9000,9500,10000], pk:'72h Marathon'},
+  montanablack88: {name:'MontanaBlack',real:'Marcel Eris, 36',em:'🖤',bg:'#1a1010',c:'#ff5e5e',cat:'Just Chatting / IRL',since:2013,growth:180000,avgViewers:22000,peakViewers:257202,hoursStreamed:890,watchtime:50,tags:['Partner','IRL'],tcl:['bdg-p','bdg-t'],desc:'Marcel Eris ist das Gesicht des deutschen Twitch. Am 22. Dez. 2024 stellte er mit 257.202 gleichzeitigen Zuschauern seinen Kanalrekord auf. Gründer der Energie-Drink-Marke Gönrgy.',mo:[14000,15000,18000,20000,19000,22000,24000,28000,21000,25000,30000,45000],pk:'22. Dez 2024'},
+  trymacs:        {name:'Trymacs',real:'Max Stemmler, 28',em:'🏆',bg:'#101a10',c:'#3ddc84',cat:'Gaming / Events',since:2016,growth:320000,avgViewers:19000,peakViewers:700000,hoursStreamed:1400,watchtime:95,tags:['Partner','Gaming'],tcl:['bdg-p','bdg-t'],desc:'Hält den deutschen Allzeit-Peak-Rekord: Ein Minecraft-Event 2024 zog über 700.000 gleichzeitige Zuschauer an. Mitgründer von Happy Slice Pizza und Lanch.',mo:[12000,13000,16000,18000,22000,30000,25000,18000,19000,21000,23000,28000],pk:'Minecraft-Event'},
+  papaplatte:     {name:'Papaplatte',real:'Kevin Teller, 27',em:'🚐',bg:'#101420',c:'#9147ff',cat:'IRL / Just Chatting',since:2013,growth:350000,avgViewers:30000,peakViewers:301000,hoursStreamed:1800,watchtime:130,tags:['Partner','#1 Abos'],tcl:['bdg-p','bdg-g'],desc:'Meistabonnierter deutscher Streamer. Watchtime ≈130 Mio. Std. 2024. Bekannt für die "Edeltour" im Wohnmobil.',mo:[18000,22000,28000,32000,35000,38000,40000,36000,31000,28000,30000,34000],pk:'Edeltour-Event'},
+  eliasn97:       {name:'EliasN97',real:'Elias Nerlich, 27',em:'⚽',bg:'#0a1420',c:'#57c8ff',cat:'FIFA / Fußball',since:2018,growth:1300000,avgViewers:37500,peakViewers:208614,hoursStreamed:1480,watchtime:140,tags:['Partner','E-Sport'],tcl:['bdg-p','bdg-t'],desc:'Höchste Watchtime aller DE-Streamer 2024 (≈140 Mio. Std.) und größter Follower-Zuwachs: +1,3 Mio. Ex-FIFA-Profi, heute Unternehmer.',mo:[28000,30000,33000,40000,42000,38000,45000,50000,46000,35000,32000,38000],pk:'Dez. 2024'},
+  bastighg:       {name:'BastiGHG',real:'Basti G., 27',em:'⛏️',bg:'#101a14',c:'#00e5c3',cat:'Minecraft / Gaming',since:2019,growth:280000,avgViewers:14000,peakViewers:88507,hoursStreamed:1550,watchtime:55,tags:['Partner','Minecraft'],tcl:['bdg-p','bdg-n'],desc:'1.550+ Streamstunden 2024. Persönlicher Rekord: 88.507 Zuschauer bei den Stream Awards im Dezember 2024.',mo:[8000,9000,11000,13000,15000,16000,18000,16000,13000,12000,14000,16000],pk:'Stream Awards'},
+  therealknossi:  {name:'Knossi',real:'Jens Knossalla, 38',em:'👑',bg:'#201a00',c:'#ffcb47',cat:'Talk / IRL / Events',since:2014,growth:90000,avgViewers:14769,peakViewers:336000,hoursStreamed:680,watchtime:36,tags:['Partner','TV-Star'],tcl:['bdg-p','bdg-g'],desc:'Der "König des Internets" – war 2020 kurzzeitig Twitch #1 weltweit. Horror-Kamp Rekord: 336.000 Zuschauer.',mo:[10000,11000,13000,15000,18000,14000,12000,13000,14000,16000,15000,17000],pk:'Horror-Kamp'},
+  gronkh:         {name:'Gronkh',real:'Erik Range, 45',em:'🎭',bg:'#1a100a',c:'#ff8c42',cat:"Gaming / Let's Play",since:2010,growth:50000,avgViewers:18993,peakViewers:62000,hoursStreamed:1100,watchtime:42,tags:['Partner','Legende'],tcl:['bdg-p','bdg-g'],desc:'Streaming-Legende: 2014–2016 meistabonnierter YouTuber Deutschlands. 2024 mehr Zuschauer als der offizielle Computerspielpreis-Stream.',mo:[15000,16000,18000,22000,20000,19000,18000,17000,19000,21000,20000,22000],pk:'Computerspielpreis'},
+  zarbex:         {name:'Zarbex',real:'Dominic Z., ~25',em:'🌍',bg:'#0a1a18',c:'#4ade80',cat:'IRL / Travel',since:2020,growth:550000,avgViewers:13000,peakViewers:59000,hoursStreamed:2100,watchtime:30,tags:['Partner','Newcomer 2024'],tcl:['bdg-p','bdg-n'],desc:'Großer Durchbruch 2024: +550k Follower. Mit 2.100 Streamstunden aktivster Streamer der deutschen Top 10.',mo:[2000,3000,5000,8000,11000,14000,16000,15000,12000,13000,14000,15000],pk:'IRL-Event'},
+  handofblood:    {name:'HandOfBlood',real:'Max Knabe, 34',em:'🩸',bg:'#200a0a',c:'#ff6bcd',cat:'Gaming / Talk',since:2016,growth:120000,avgViewers:16000,peakViewers:95000,hoursStreamed:1200,watchtime:42,tags:['Partner','Gaming'],tcl:['bdg-p','bdg-t'],desc:'Bekannt für League of Legends. 2024 starkes Wachstum. Produziert auch Content für ServusTV.',mo:[10000,11000,13000,16000,18000,20000,19000,17000,15000,16000,17000,18000],pk:'LoL-Turnier'},
+  rewinside:      {name:'Rewinside',real:'Sebastian M., 32',em:'🎬',bg:'#100a1a',c:'#bf94ff',cat:'Gaming / Challenges',since:2015,growth:75000,avgViewers:9500,peakViewers:55000,hoursStreamed:2000,watchtime:26,tags:['Partner','Marathon'],tcl:['bdg-p','bdg-g'],desc:'Bekannt für 72h-Stream-Marathons 2024. Neben Twitch erfolgreicher YouTuber.',mo:[8000,9000,10000,10500,11000,12000,11500,10000,9500,9000,9500,10000],pk:'72h Marathon'},
 };
 
-// ─── STATE ───────────────────────────────────────────────────
+// State
 let sortKey = 'followers';
 let selIdx  = 0;
 let sorted  = [];
-let liveMap = {};  // channelId → { live, viewers, title, game }
+let liveMap = {};
+let apiData = {}; // live von Twitch: { id: { followers, subscribers, userId } }
 let mini    = null;
 let C1,C2,C3,C4;
 let cdVal   = 60;
-let apiMode = false; // true = echte Daten, false = Simulation
-let prevLiveMap = {};
+let apiMode = false;
 
-// ─── HELPERS ─────────────────────────────────────────────────
-const fmt = n => n >= 1e6 ? (n/1e6).toFixed(2)+'M' : n >= 1e3 ? (n/1e3).toFixed(1)+'k' : String(n);
-const fmtH = h => h >= 1000 ? (h/1000).toFixed(1)+'k h' : h+' h';
-const fmtW = h => h+'M h';
-const twUrl = id => `https://www.twitch.tv/${id}`;
-const SVG_TW = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>`;
+const fmt  = n => n>=1e6?(n/1e6).toFixed(2)+'M':n>=1e3?(n/1e3).toFixed(1)+'k':String(n);
+const fmtH = h => h>=1000?(h/1000).toFixed(1)+'k h':h+' h';
+const SVG  = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>`;
 
 function setStatus(state, text) {
-  const dot = document.getElementById('sDot');
-  const txt = document.getElementById('sTxt');
-  dot.className = 'status-dot ' + state;
-  txt.innerHTML = text;
+  document.getElementById('sDot').className = 'status-dot ' + state;
+  document.getElementById('sTxt').innerHTML = text;
 }
 
-// ─── TWITCH API (via Proxy) ───────────────────────────────────
-async function fetchLiveStatus() {
+function getFollowers(id) {
+  return apiData[id]?.followers ?? BASE[id]?.followers ?? 0;
+}
+function getSubscribers(id) {
+  return apiData[id]?.subscribers ?? BASE[id]?.subscribers ?? 0;
+}
+
+// ── TWITCH API CALLS ──────────────────────────────────────────
+
+async function fetchUserIds() {
+  const logins = CHANNELS.map(c => `login=${c}`).join('&');
+  const res = await fetch(`${PROXY}?endpoint=users&${logins}`, { signal: AbortSignal.timeout(8000) });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const json = await res.json();
+  const map = {};
+  (json.data || []).forEach(u => { map[u.login.toLowerCase()] = u.id; });
+  return map;
+}
+
+async function fetchFollowers(userIds) {
+  const results = {};
+  await Promise.all(Object.entries(userIds).map(async ([login, uid]) => {
+    try {
+      const res = await fetch(`${PROXY}?endpoint=channels%2Ffollowers&broadcaster_id=${uid}`, { signal: AbortSignal.timeout(8000) });
+      const json = await res.json();
+      results[login] = json.total ?? null;
+    } catch { results[login] = null; }
+  }));
+  return results;
+}
+
+async function fetchStreams() {
   const logins = CHANNELS.map(c => `user_login=${c}`).join('&');
+  const res = await fetch(`${PROXY}?endpoint=streams&${logins}`, { signal: AbortSignal.timeout(8000) });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return await res.json();
+}
+
+async function loadAllData() {
+  setStatus('loading', 'Lade Live-Daten…');
   try {
-    setStatus('loading', 'Lade Live-Daten…');
-    const res = await fetch(`${PROXY}?endpoint=streams&${logins}`, { signal: AbortSignal.timeout(8000) });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const json = await res.json();
+    // 1. User IDs holen
+    const userIds = await fetchUserIds();
 
-    if (json.error) throw new Error(json.error);
+    // 2. Follower für alle holen
+    const followers = await fetchFollowers(userIds);
 
-    // Alle erst auf offline setzen
-    CHANNELS.forEach(id => { liveMap[id] = { live: false, viewers: 0, title: '', game: '' }; });
-    // Dann Live-Streamer eintragen
-    (json.data || []).forEach(stream => {
-      const id = stream.user_login.toLowerCase();
-      liveMap[id] = {
-        live: true,
-        viewers: stream.viewer_count,
-        title: stream.title,
-        game: stream.game_name,
+    // 3. Live-Status holen
+    const streams = await fetchStreams();
+
+    // Live-Map aufbauen
+    CHANNELS.forEach(id => { liveMap[id] = { on: false, v: 0, title: '', game: '' }; });
+    (streams.data || []).forEach(s => {
+      const id = s.user_login.toLowerCase();
+      liveMap[id] = { on: true, v: s.viewer_count, title: s.title, game: s.game_name };
+    });
+
+    // API-Daten speichern
+    CHANNELS.forEach(id => {
+      apiData[id] = {
+        followers: followers[id] ?? BASE[id]?.followers ?? 0,
+        userId: userIds[id] ?? null,
       };
     });
 
     apiMode = true;
-    setStatus('ok', `<strong>Echte Twitch-Daten</strong> · zuletzt ${new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}`);
+    const liveCount = CHANNELS.filter(id => liveMap[id]?.on).length;
+    setStatus('ok', `<strong>✓ Echte Twitch-Daten</strong> · ${new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}`);
+    updKPIs(); doSort(); renderList(); renderDetail(); renderCharts();
+
   } catch (err) {
-    // Proxy nicht erreichbar → Simulation
+    // Fallback: Simulation
     simulateLive();
     apiMode = false;
-    setStatus('err', `Proxy nicht verbunden · <strong>Simulation aktiv</strong>`);
+    setStatus('err', `Proxy-Fehler · <strong>Simulation aktiv</strong>`);
+    updKPIs(); renderList(); updDetailLive();
   }
-
-  updKPIs(); renderList(); updDetailLive();
 }
 
-// ─── SIMULATION (Fallback) ───────────────────────────────────
 function simulateLive() {
-  const CHANCES = {montanablack88:.28,trymacs:.42,papaplatte:.5,eliasn97:.55,bastighg:.62,therealknossi:.3,gronkh:.35,zarbex:.68,handofblood:.4,rewinside:.48};
+  const CH = {montanablack88:.28,trymacs:.42,papaplatte:.5,eliasn97:.55,bastighg:.62,therealknossi:.3,gronkh:.35,zarbex:.68,handofblood:.4,rewinside:.48};
   CHANNELS.forEach(id => {
-    const was = liveMap[id]?.live;
+    const was = liveMap[id]?.on;
     if (was) {
-      if (Math.random() < .22) { liveMap[id] = {live:false,viewers:0,title:'',game:''}; }
-      else {
-        const cur = liveMap[id].viewers;
-        liveMap[id].viewers = Math.max(500, Math.round(cur + (Math.random()-.5)*.14*cur));
-      }
+      if (Math.random()<.22) liveMap[id]={on:false,v:0,title:'',game:''};
+      else { const c=liveMap[id].v; liveMap[id].v=Math.max(500,Math.round(c+(Math.random()-.5)*.14*c)); }
     } else {
-      const b = BASE[id];
-      if (b && Math.random() < (CHANCES[id]||.35)*.3) {
-        liveMap[id] = {live:true,viewers:Math.round(b.avgViewers*(.6+Math.random()*.8)),title:'Stream läuft…',game:'Just Chatting'};
-      } else {
-        liveMap[id] = {live:false,viewers:0,title:'',game:''};
-      }
+      if (Math.random()<(CH[id]||.35)*.3) liveMap[id]={on:true,v:Math.round((BASE[id]?.avgViewers||10000)*(.6+Math.random()*.8)),title:'Stream läuft…',game:'Just Chatting'};
+      else liveMap[id]={on:false,v:0,title:'',game:''};
     }
   });
 }
 
-// ─── KPIs ────────────────────────────────────────────────────
 function updKPIs() {
-  const live = CHANNELS.filter(id => liveMap[id]?.live);
-  const total = live.reduce((a,id) => a + (liveMap[id]?.viewers||0), 0);
-  document.getElementById('kLive').textContent  = live.length;
-  document.getElementById('kViews').textContent = fmt(total);
-  document.getElementById('liveBadge').textContent = `● ${live.length} LIVE`;
+  const ls = CHANNELS.filter(id => liveMap[id]?.on);
+  const totalV = ls.reduce((a,id)=>a+(liveMap[id]?.v||0),0);
+  const totalF = CHANNELS.reduce((a,id)=>a+getFollowers(id),0);
+  const avgS = Math.round(CHANNELS.reduce((a,id)=>a+getSubscribers(id),0)/CHANNELS.length);
+  document.getElementById('kLive').textContent = ls.length;
+  document.getElementById('kViews').textContent = fmt(totalV);
+  document.getElementById('kFollowers').textContent = fmt(totalF);
+  document.getElementById('kSubs').textContent = fmt(avgS);
+  document.getElementById('kApi').textContent = apiMode ? '✓ Live' : '⚠ Sim';
+  document.getElementById('kApiSub').textContent = apiMode ? 'Twitch API aktiv' : 'Simulation aktiv';
+  document.getElementById('liveBadge').textContent = `● ${ls.length} LIVE`;
 }
 
-// ─── SORT / SELECT ───────────────────────────────────────────
 function setSort(k, btn) {
   sortKey = k;
-  document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   doSort(); renderList(); renderDetail(); renderCharts();
 }
-function doSort() {
-  sorted = CHANNELS.map(id => ({id, ...BASE[id]})).sort((a,b) => b[sortKey] - a[sortKey]);
-}
-function sel(i) { selIdx = i; renderList(); renderDetail(); }
 
-// ─── RENDER LIST ─────────────────────────────────────────────
+function doSort() {
+  sorted = CHANNELS.map(id => ({id,...BASE[id],followers:getFollowers(id),subscribers:getSubscribers(id)}))
+    .sort((a,b) => b[sortKey] - a[sortKey]);
+}
+
+function sel(i) { selIdx=i; renderList(); renderDetail(); }
+
 function renderList() {
-  const maxV = Math.max(...sorted.map(s => s[sortKey]));
+  const maxV = Math.max(...sorted.map(s=>s[sortKey]||0));
   const lbs = {
-    followers:    s => fmt(s.followers),
-    growth:       s => '+'+fmt(s.growth),
-    subscribers:  s => fmt(s.subscribers)+' Abos',
-    avgViewers:   s => fmt(s.avgViewers)+' Ø',
-    peakViewers:  s => fmt(s.peakViewers)+' Peak',
-    hoursStreamed:s => fmtH(s.hoursStreamed),
-    watchtime:    s => s.watchtime+'M h',
+    followers:s=>fmt(s.followers), growth:s=>'+'+fmt(s.growth),
+    subscribers:s=>fmt(s.subscribers)+' Abos', avgViewers:s=>fmt(s.avgViewers)+' Ø',
+    peakViewers:s=>fmt(s.peakViewers)+' Peak', hoursStreamed:s=>fmtH(s.hoursStreamed),
+    watchtime:s=>s.watchtime+'M h'
   };
   document.getElementById('sList').innerHTML = sorted.map((s,i) => {
-    const pct = (s[sortKey]/maxV*100).toFixed(1);
+    const pct = maxV ? (s[sortKey]/maxV*100).toFixed(1) : 0;
     const rc  = i===0?'r1':i===1?'r2':i===2?'r3':'';
-    const on  = liveMap[s.id]?.live;
-    const lv  = liveMap[s.id]?.viewers||0;
+    const on  = liveMap[s.id]?.on;
+    const lv  = liveMap[s.id]?.v||0;
     return `<div class="srow${i===selIdx?' active':''}" onclick="sel(${i})">
       <div class="srank ${rc}">${i+1}</div>
       <div class="savatar${on?' lv':''}" style="background:${s.bg};border-color:${on?'var(--live)':s.c}">${s.em}</div>
       <div class="sinfo">
         <div class="snrow"><span class="sname">${s.name}</span><span class="ldot${on?' on':''}"></span><span class="llabel${on?' on':''}">LIVE</span></div>
-        <div class="stag">${on ? '👁 '+fmt(lv)+' Zuschauer gerade' : s.cat}</div>
+        <div class="stag">${on?'👁 '+fmt(lv)+' Zuschauer':s.cat}</div>
       </div>
       <div class="smet">
-        <div class="sval" style="color:${on?'var(--live)':s.c}">${on ? fmt(lv)+' 🔴' : lbs[sortKey](s)}</div>
+        <div class="sval" style="color:${on?'var(--live)':s.c}">${on?fmt(lv)+' 🔴':lbs[sortKey](s)}</div>
         <div class="sbar"><div class="sbar-fill" style="width:${pct}%;background:${on?'var(--live)':s.c}"></div></div>
       </div>
     </div>`;
   }).join('');
 }
 
-// ─── RENDER DETAIL ───────────────────────────────────────────
 function renderDetail() {
-  const s   = sorted[selIdx];
+  const s  = sorted[selIdx];
   if (!s) return;
-  const on  = liveMap[s.id]?.live;
-  const lv  = liveMap[s.id]?.viewers||0;
-  const ttl = liveMap[s.id]?.title||'';
-  const gm  = liveMap[s.id]?.game||'';
-  const url = twUrl(s.id);
+  const on = liveMap[s.id]?.on;
+  const lv = liveMap[s.id]?.v||0;
+  const tt = liveMap[s.id]?.title||'';
+  const gm = liveMap[s.id]?.game||'';
+  const url= `https://www.twitch.tv/${s.id}`;
+  const host = window.location.hostname||'localhost';
 
   document.getElementById('dCard').innerHTML = `<div class="dcard">
     <div class="lbanner${on?' on':''}" id="lb">
       <div class="lbdot"></div>
-      <div style="flex:1">
-        <div class="lbtxt">🔴 JETZT LIVE</div>
-        ${ttl?`<div style="font-size:11px;color:var(--muted2);margin-top:2px;max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${ttl}${gm?' · '+gm:''}</div>`:''}
-      </div>
+      <div style="flex:1"><div class="lbtxt">🔴 JETZT LIVE</div>${tt?`<div style="font-size:11px;color:var(--muted2);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:280px">${tt}${gm?' · '+gm:''}</div>`:''}</div>
       <span class="lbv" id="lbv">${fmt(lv)} Zuschauer</span>
-      <a class="tw-btn live-now" href="${url}" target="_blank">${SVG_TW}Jetzt anschauen</a>
+      <a class="tw-btn live-now" href="${url}" target="_blank">${SVG}Jetzt anschauen</a>
     </div>
-
     <div class="dctop">
       <div class="dcleft">
         <div class="dcav${on?' lv':''}" id="dcAv" style="background:${s.bg}">${s.em}</div>
@@ -526,106 +449,73 @@ function renderDetail() {
           <div class="dcname" style="color:${s.c}">${s.name}</div>
           <div class="dcreal">${s.real} · Twitch seit ${s.since}</div>
           <div class="dctags">
-            ${s.tags.map((t,i) => `<span class="bdg ${s.tcl[i]}">${t}</span>`).join('')}
-            ${on ? `<span class="bdg bdg-lv">🔴 LIVE</span>` : ''}
-            ${apiMode ? `<span class="bdg bdg-n">✓ Echte Daten</span>` : ''}
+            ${s.tags.map((t,i)=>`<span class="bdg ${s.tcl[i]}">${t}</span>`).join('')}
+            ${on?`<span class="bdg bdg-lv">🔴 LIVE</span>`:''}
+            ${apiMode?`<span class="bdg bdg-t">✓ Live API</span>`:''}
           </div>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
         <div class="rpill">#${sorted.findIndex(x=>x.id===s.id)+1} DE</div>
-        <a class="tw-btn sm" href="${url}" target="_blank">${SVG_TW}twitch.tv/${s.id}</a>
+        <a class="tw-btn sm" href="${url}" target="_blank">${SVG}twitch.tv/${s.id}</a>
       </div>
     </div>
-
     <div style="margin-bottom:13px">
       <div class="embed-hdr">
         <div class="embed-label">${on?'🔴 Live Stream':'📺 Stream / Kanal'}</div>
-        <div class="embed-actions">
-          <button class="open-btn${on?' lv':''}" onclick="openEmbed('${s.id}','${s.name}',this)">▶ Player öffnen</button>
-          <a class="tw-btn sm" href="${url}" target="_blank">${SVG_TW}Kanal</a>
+        <div style="display:flex;gap:7px;align-items:center">
+          <button class="open-btn${on?' lv':''}" onclick="openEmbed('${s.id}','${s.name}','${host}',this)">▶ Player öffnen</button>
+          <a class="tw-btn sm" href="${url}" target="_blank">${SVG}Kanal</a>
         </div>
       </div>
       <div id="eA_${s.id}">
         <div class="embed-ph">
           <div class="embed-ph-icon">${on?'🔴':'📺'}</div>
-          <div class="embed-ph-txt">${on
-            ? `<strong style="color:var(--live)">${s.name} streamt gerade!</strong><br>${ttl?`"${ttl}"<br>`:''}Klicke "Player öffnen" für den eingebetteten Stream.`
-            : `<strong>${s.name}</strong> ist gerade offline.<br>Klicke "Player öffnen" für VODs und Kanalinhalte.`
-          }</div>
+          <div class="embed-ph-txt">${on?`<strong style="color:var(--live)">${s.name} streamt gerade!</strong><br>Klicke "Player öffnen" für den eingebetteten Stream.`:`<strong>${s.name}</strong> ist offline.<br>Klicke "Player öffnen" für VODs.`}</div>
         </div>
       </div>
     </div>
-
     <div class="mets">
-      <div class="met"><div class="met-l">Follower</div><div class="met-v purple">${fmt(s.followers)}</div><div class="met-s">gesamt</div></div>
+      <div class="met"><div class="met-l">Follower ${apiMode?'<span class="api-tag">live</span>':''}</div><div class="met-v purple">${fmt(s.followers)}</div><div class="met-s">${apiMode?'von Twitch API':'Schätzwert'}</div></div>
       <div class="met"><div class="met-l">Zuwachs 2024</div><div class="met-v green">+${fmt(s.growth)}</div><div class="met-s">neue Follower</div></div>
-      <div class="met"><div class="met-l">Abonnenten</div><div class="met-v gold">${fmt(s.subscribers)}</div><div class="met-s">aktive Subs</div></div>
-      <div class="met"><div class="met-l">🔴 Live jetzt</div><div class="met-v${on?' lv':' red'}" id="mLive">${on?fmt(lv):'—'}</div><div class="met-s">${on?(apiMode?'echt':'simuliert'):'offline'}</div></div>
-      <div class="met"><div class="met-l">Ø Zuschauer</div><div class="met-v teal">${fmt(s.avgViewers)}</div><div class="met-s">pro Stream 2024</div></div>
+      <div class="met"><div class="met-l">Abonnenten ${apiMode?'<span class="api-tag">live</span>':''}</div><div class="met-v gold">${fmt(s.subscribers)}</div><div class="met-s">aktive Subs</div></div>
+      <div class="met"><div class="met-l">🔴 Live jetzt</div><div class="met-v${on?' lv':' red'}" id="mLive">${on?fmt(lv):'—'}</div><div class="met-s">${on?'Zuschauer':'offline'}</div></div>
+      <div class="met"><div class="met-l">Ø Zuschauer</div><div class="met-v teal">${fmt(s.avgViewers)}</div><div class="met-s">2024 Schnitt</div></div>
       <div class="met"><div class="met-l">Peak Viewer</div><div class="met-v red">${fmt(s.peakViewers)}</div><div class="met-s">${s.pk}</div></div>
       <div class="met"><div class="met-l">Streamzeit</div><div class="met-v purple">${fmtH(s.hoursStreamed)}</div><div class="met-s">2024 gesamt</div></div>
-      <div class="met"><div class="met-l">Watchtime</div><div class="met-v gold">${fmtW(s.watchtime)}</div><div class="met-s">2024 gesamt</div></div>
+      <div class="met"><div class="met-l">Watchtime</div><div class="met-v gold">${s.watchtime}M h</div><div class="met-s">2024 gesamt</div></div>
     </div>
     <div class="dcdesc">${s.desc}</div>
     <div class="mini-title">Ø Zuschauer — Monatsverlauf 2024</div>
-    <div style="position:relative;height:88px"><canvas id="mC" role="img" aria-label="Monatsverlauf"></canvas></div>
+    <div style="position:relative;height:88px"><canvas id="mC"></canvas></div>
   </div>`;
 
-  if (mini) mini.destroy();
-  mini = new Chart(document.getElementById('mC'), {
-    type:'line',
-    data:{labels:['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'],datasets:[{data:s.mo,borderColor:s.c,backgroundColor:s.c+'22',borderWidth:2,pointRadius:3,pointBackgroundColor:s.c,fill:true,tension:.4}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fmt(ctx.raw)+' Ø'}}},
-      scales:{x:{ticks:{color:'rgba(255,255,255,.28)',font:{size:9}},grid:{display:false},border:{display:false}},
-              y:{ticks:{color:'rgba(255,255,255,.28)',font:{size:9},callback:v=>fmt(v)},grid:{color:'rgba(255,255,255,.05)'},border:{display:false}}}}
-  });
+  if(mini)mini.destroy();
+  mini=new Chart(document.getElementById('mC'),{type:'line',data:{labels:['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'],datasets:[{data:s.mo,borderColor:s.c,backgroundColor:s.c+'22',borderWidth:2,pointRadius:3,pointBackgroundColor:s.c,fill:true,tension:.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fmt(ctx.raw)+' Ø'}}},scales:{x:{ticks:{color:'rgba(255,255,255,.28)',font:{size:9}},grid:{display:false},border:{display:false}},y:{ticks:{color:'rgba(255,255,255,.28)',font:{size:9},callback:v=>fmt(v)},grid:{color:'rgba(255,255,255,.05)'},border:{display:false}}}}});
 }
 
 function updDetailLive() {
-  const s  = sorted[selIdx];
-  if (!s) return;
-  const on = liveMap[s.id]?.live;
-  const lv = liveMap[s.id]?.viewers||0;
-  const lb = document.getElementById('lb');
-  if (lb) { lb.className = 'lbanner'+(on?' on':''); }
-  const lbv = document.getElementById('lbv');
-  if (lbv) lbv.textContent = fmt(lv)+' Zuschauer';
-  const av = document.getElementById('dcAv');
-  if (av) av.className = 'dcav'+(on?' lv':'');
-  const ml = document.getElementById('mLive');
-  if (ml) {
-    const wasLive = prevLiveMap[s.id]?.live;
-    ml.textContent = on ? fmt(lv) : '—';
-    ml.className = 'met-v '+(on?'lv':'red');
-    if (on !== wasLive || (on && lv !== prevLiveMap[s.id]?.viewers)) {
-      ml.closest('.met').classList.remove('flash','flash-live');
-      void ml.closest('.met').offsetWidth;
-      ml.closest('.met').classList.add(on?'flash-live':'flash');
-    }
-  }
-  prevLiveMap = JSON.parse(JSON.stringify(liveMap));
+  const s=sorted[selIdx]; if(!s) return;
+  const on=liveMap[s.id]?.on; const lv=liveMap[s.id]?.v||0;
+  const lb=document.getElementById('lb'); if(lb) lb.className='lbanner'+(on?' on':'');
+  const lbv=document.getElementById('lbv'); if(lbv) lbv.textContent=fmt(lv)+' Zuschauer';
+  const av=document.getElementById('dcAv'); if(av) av.className='dcav'+(on?' lv':'');
+  const ml=document.getElementById('mLive');
+  if(ml){ml.textContent=on?fmt(lv):'—';ml.className='met-v '+(on?'lv':'red');if(on){ml.closest('.met').classList.add('flash-live');setTimeout(()=>ml.closest('.met')?.classList.remove('flash-live'),700);}}
 }
 
-function openEmbed(id, name, btn) {
-  const area = document.getElementById('eA_'+id);
-  if (!area) return;
-  btn.disabled = true; btn.textContent = 'Lade…';
-  const host = window.location.hostname || 'localhost';
-  area.innerHTML = `<div class="embed-wrap"><iframe src="https://player.twitch.tv/?channel=${id}&parent=${host}&autoplay=false" frameborder="0" allowfullscreen scrolling="no" title="Twitch: ${name}"></iframe></div>`;
+function openEmbed(id,name,host,btn){
+  const area=document.getElementById('eA_'+id); if(!area) return;
+  btn.disabled=true; btn.textContent='Lade…';
+  area.innerHTML=`<div class="embed-wrap"><iframe src="https://player.twitch.tv/?channel=${id}&parent=${host}&autoplay=false" frameborder="0" allowfullscreen scrolling="no"></iframe></div>`;
 }
 
-// ─── CHARTS ──────────────────────────────────────────────────
-const AX = {
-  x:{ticks:{color:'rgba(255,255,255,.27)',font:{size:9}},grid:{display:false},border:{display:false}},
-  y:{ticks:{color:'rgba(255,255,255,.27)',font:{size:9}},grid:{color:'rgba(255,255,255,.05)'},border:{display:false}}
-};
+const AX={x:{ticks:{color:'rgba(255,255,255,.27)',font:{size:9}},grid:{display:false},border:{display:false}},y:{ticks:{color:'rgba(255,255,255,.27)',font:{size:9}},grid:{color:'rgba(255,255,255,.05)'},border:{display:false}}};
+
 function renderCharts() {
-  const nm = sorted.map(s=>s.name);
-  const cl = sorted.map(s=>s.c);
-  const ca = sorted.map(s=>s.c+'99');
-  if(C1)C1.destroy();if(C2)C2.destroy();if(C3)C3.destroy();if(C4)C4.destroy();
-  C1=new Chart(document.getElementById('cF'),{type:'bar',data:{labels:nm,datasets:[{data:sorted.map(s=>s.followers),backgroundColor:ca,borderColor:cl,borderWidth:1,borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fmt(ctx.raw)}}},scales:{...AX,y:{...AX.y,ticks:{...AX.y.ticks,callback:v=>fmt(v)}}}}});
+  const nm=sorted.map(s=>s.name); const cl=sorted.map(s=>s.c); const ca=sorted.map(s=>s.c+'99');
+  if(C1)C1.destroy(); if(C2)C2.destroy(); if(C3)C3.destroy(); if(C4)C4.destroy();
+  C1=new Chart(document.getElementById('cF'),{type:'bar',data:{labels:nm,datasets:[{data:sorted.map(s=>s.followers),backgroundColor:ca,borderColor:cl,borderWidth:1,borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fmt(ctx.raw)+' Follower'}}},scales:{...AX,y:{...AX.y,ticks:{...AX.y.ticks,callback:v=>fmt(v)}}}}});
   C2=new Chart(document.getElementById('cV'),{type:'bar',data:{labels:nm,datasets:[{label:'Ø',data:sorted.map(s=>s.avgViewers),backgroundColor:ca,borderColor:cl,borderWidth:1,borderRadius:3},{label:'Peak',data:sorted.map(s=>s.peakViewers),type:'line',borderColor:'rgba(255,203,71,.85)',backgroundColor:'rgba(255,203,71,.1)',borderWidth:2,pointRadius:4,pointBackgroundColor:'#ffcb47',fill:false,tension:.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${fmt(ctx.raw)}`}}},scales:{...AX,y:{...AX.y,ticks:{...AX.y.ticks,callback:v=>fmt(v)}}}}});
   const bg=[...CHANNELS.map(id=>({id,...BASE[id]}))].sort((a,b)=>b.growth-a.growth);
   C3=new Chart(document.getElementById('cG'),{type:'bar',data:{labels:bg.map(s=>s.name),datasets:[{data:bg.map(s=>s.growth),backgroundColor:bg.map(s=>s.c+'88'),borderColor:bg.map(s=>s.c),borderWidth:1,borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'+'+fmt(ctx.raw)}}},scales:{...AX,y:{...AX.y,ticks:{...AX.y.ticks,callback:v=>'+'+fmt(v)}}}}});
@@ -635,49 +525,36 @@ function renderCharts() {
 }
 
 function renderTable() {
-  const byF = CHANNELS.map(id=>({id,...BASE[id]})).sort((a,b)=>b.followers-a.followers);
-  document.getElementById('tBody').innerHTML = byF.map((s,i) => {
-    const on = liveMap[s.id]?.live;
-    const lv = liveMap[s.id]?.viewers||0;
-    const gp = ((s.growth/s.followers)*100).toFixed(1);
+  const byF=CHANNELS.map(id=>({id,...BASE[id],followers:getFollowers(id),subscribers:getSubscribers(id)})).sort((a,b)=>b.followers-a.followers);
+  document.getElementById('tBody').innerHTML=byF.map((s,i)=>{
+    const on=liveMap[s.id]?.on; const lv=liveMap[s.id]?.v||0;
+    const gp=s.followers?((s.growth/s.followers)*100).toFixed(1):'–';
     return `<tr>
       <td style="color:var(--muted);font-family:var(--mono)">${i+1}</td>
       <td><div style="display:flex;align-items:center;gap:7px"><span>${s.em}</span><span style="font-weight:700;color:${s.c}">${s.name}</span></div></td>
-      <td class="tnum">${fmt(s.followers)}</td>
+      <td class="tnum">${fmt(s.followers)}${apiMode?'<span class="api-tag">live</span>':''}</td>
       <td><span class="gtag">+${fmt(s.growth)}</span> <span style="font-size:10px;color:var(--muted)">+${gp}%</span></td>
       <td class="tnum">${fmt(s.avgViewers)}</td>
       <td class="tnum" style="color:var(--red)">${fmt(s.peakViewers)}</td>
-      <td class="tnum" style="color:var(--gold)">${fmt(s.subscribers)}</td>
+      <td class="tnum" style="color:var(--gold)">${fmt(s.subscribers)}${apiMode?'<span class="api-tag">live</span>':''}</td>
       <td class="tnum">${fmtH(s.hoursStreamed)}</td>
       <td class="tnum" style="color:var(--teal)">${s.watchtime}M h</td>
-      <td>${on
-        ? `<span style="display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;color:var(--live);font-weight:700"><span style="width:6px;height:6px;border-radius:50%;background:var(--live);display:inline-block;animation:lp 1.3s infinite"></span>${fmt(lv)}</span>`
-        : `<span style="font-size:10px;color:var(--muted)">offline</span>`
-      }</td>
+      <td>${on?`<span style="display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;color:var(--live);font-weight:700"><span style="width:6px;height:6px;border-radius:50%;background:var(--live);display:inline-block;animation:lp 1.3s infinite"></span>${fmt(lv)}</span>`:`<span style="font-size:10px;color:var(--muted)">offline</span>`}</td>
     </tr>`;
   }).join('');
 }
 
-// ─── COUNTDOWN + AUTO-REFRESH ────────────────────────────────
-setInterval(() => {
+// Countdown
+setInterval(()=>{
   cdVal--;
-  if (cdVal <= 0) {
-    cdVal = 60;
-    fetchLiveStatus().then(() => renderTable());
-  }
-  document.getElementById('cd').textContent = cdVal;
-}, 1000);
+  if(cdVal<=0){ cdVal=60; loadAllData(); }
+  document.getElementById('cd').textContent=cdVal;
+},1000);
 
-function toggleSetup() {
-  const g = document.getElementById('setupGuide');
-  g.style.display = g.style.display === 'none' ? '' : 'none';
-}
-
-// ─── INIT ─────────────────────────────────────────────────────
-doSort();
-CHANNELS.forEach(id => { liveMap[id] = {live:false,viewers:0,title:'',game:''}; });
-renderList(); renderDetail(); renderCharts();
-fetchLiveStatus(); // sofort beim Laden versuchen
+// Init
+CHANNELS.forEach(id=>{ liveMap[id]={on:false,v:0,title:'',game:''}; apiData[id]={followers:BASE[id]?.followers||0,subscribers:BASE[id]?.subscribers||0}; });
+doSort(); renderList(); renderDetail(); renderCharts();
+loadAllData();
 </script>
 </body>
 </html>
