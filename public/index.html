@@ -20,8 +20,10 @@
 body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(145,71,255,.07) 0%,transparent 60%),
-             radial-gradient(ellipse 60% 40% at 80% 90%,rgba(0,229,195,.04) 0%,transparent 50%)}
+  radial-gradient(ellipse 60% 40% at 80% 90%,rgba(0,229,195,.04) 0%,transparent 50%)}
 .wrap{max-width:1440px;margin:0 auto;padding:0 20px 48px;position:relative;z-index:1}
+
+/* TOPBAR */
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:22px 0 0;gap:16px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:12px}
 .logo-icon{width:40px;height:40px;background:var(--purple);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;box-shadow:0 0 24px rgba(145,71,255,.55)}
@@ -30,7 +32,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .logo-sub{font-size:11px;color:var(--muted);margin-top:2px}
 .topbar-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .status-pill{display:flex;align-items:center;gap:7px;background:var(--panel);border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-family:var(--mono);font-size:11px}
-.status-dot{width:7px;height:7px;border-radius:50%;transition:background .4s}
+.status-dot{width:7px;height:7px;border-radius:50%}
 .status-dot.ok{background:var(--green);animation:blink 2s infinite}
 .status-dot.loading{background:var(--gold);animation:blink .6s infinite}
 .status-dot.err{background:var(--red)}
@@ -38,10 +40,39 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .cd-num{color:var(--green);font-weight:600;min-width:22px;text-align:center}
 .status-txt{color:var(--muted2)}
 .status-txt strong{color:var(--text)}
-.sort-bar{display:flex;gap:6px;margin:18px 0 13px;flex-wrap:wrap}
+
+/* YEAR FILTER */
+.year-bar{display:flex;align-items:center;gap:8px;margin-top:16px;flex-wrap:wrap}
+.year-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em;margin-right:4px}
+.year-btn{font-family:var(--mono);font-size:12px;font-weight:600;padding:5px 16px;border-radius:100px;border:1px solid var(--border2);background:var(--panel);color:var(--muted2);cursor:pointer;transition:all .2s}
+.year-btn:hover{border-color:var(--gold);color:var(--gold)}
+.year-btn.active{background:rgba(255,203,71,.15);border-color:var(--gold);color:var(--gold)}
+.year-note{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px}
+
+/* SORT + ADD BAR */
+.toolbar{display:flex;align-items:center;gap:8px;margin:14px 0;flex-wrap:wrap}
 .sort-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 13px;border-radius:100px;border:1px solid var(--border2);background:var(--panel);color:var(--muted2);cursor:pointer;transition:all .2s}
 .sort-btn:hover{border-color:var(--purple);color:var(--pl)}
 .sort-btn.active{background:var(--purple);border-color:var(--purple);color:#fff;box-shadow:0 0 14px rgba(145,71,255,.4)}
+.toolbar-sep{width:1px;height:24px;background:var(--border2);margin:0 4px}
+.add-input{font-family:var(--mono);font-size:12px;padding:6px 12px;border-radius:8px;border:1px solid var(--border2);background:var(--panel2);color:var(--text);outline:none;width:160px;transition:border-color .2s}
+.add-input:focus{border-color:var(--purple)}
+.add-input::placeholder{color:var(--muted)}
+.add-btn{background:var(--green);color:#0a1a0a;font-family:var(--sans);font-size:12px;font-weight:700;border:none;padding:7px 14px;border-radius:8px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.add-btn:hover{background:#2bc975}
+.add-btn:disabled{background:var(--muted);cursor:not-allowed}
+
+/* THRESHOLD BAR */
+.threshold-bar{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:12px 16px;margin-bottom:13px;flex-wrap:wrap}
+.threshold-label{font-family:var(--mono);font-size:11px;color:var(--muted2);white-space:nowrap}
+.threshold-input{font-family:var(--mono);font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid var(--border2);background:var(--panel2);color:var(--text);outline:none;width:90px}
+.threshold-input:focus{border-color:var(--gold)}
+.threshold-slider{flex:1;min-width:120px;max-width:260px;accent-color:var(--gold);cursor:pointer}
+.threshold-val{font-family:var(--mono);font-size:12px;color:var(--gold);font-weight:600;min-width:52px}
+.threshold-toggle{font-family:var(--sans);font-size:11px;font-weight:600;padding:4px 12px;border-radius:100px;border:1px solid var(--border2);background:var(--panel2);color:var(--muted2);cursor:pointer;transition:all .2s}
+.threshold-toggle.on{background:rgba(255,203,71,.15);border-color:var(--gold);color:var(--gold)}
+
+/* KPI ROW */
 .kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:13px}
 .kpi{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;position:relative;overflow:hidden;transition:transform .2s}
 .kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--teal))}
@@ -50,12 +81,15 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .kpi-v{font-size:20px;font-weight:700;letter-spacing:-.02em;transition:all .4s}
 .kpi-v.purple{color:var(--pl)}.kpi-v.teal{color:var(--teal)}.kpi-v.gold{color:var(--gold)}.kpi-v.lv{color:var(--live)}.kpi-v.pink{color:var(--pink)}
 .kpi-s{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* MAIN */
 .main{display:grid;grid-template-columns:360px 1fr;gap:13px}
 .list-panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden}
 .list-head{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .list-head-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2)}
 .live-badge{font-family:var(--mono);font-size:11px;background:rgba(239,68,68,.15);color:var(--live);border:1px solid rgba(239,68,68,.3);border-radius:100px;padding:2px 10px}
-.srow{display:grid;grid-template-columns:24px 38px 1fr auto;gap:9px;align-items:center;padding:10px 15px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;position:relative}
+
+.srow{display:grid;grid-template-columns:24px 38px 1fr auto 20px;gap:8px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;position:relative}
 .srow:last-child{border-bottom:none}
 .srow:hover{background:rgba(145,71,255,.06)}
 .srow.active{background:rgba(145,71,255,.1);border-left:2px solid var(--purple)}
@@ -74,9 +108,16 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .stag{font-size:10px;color:var(--muted);margin-top:1px}
 .smet{text-align:right}
 .sval{font-family:var(--mono);font-size:12px;font-weight:600;white-space:nowrap}
-.sbar{height:3px;background:var(--panel2);border-radius:2px;margin-top:5px;overflow:hidden;min-width:54px}
+.sbar{height:3px;background:var(--panel2);border-radius:2px;margin-top:5px;overflow:hidden;min-width:50px}
 .sbar-fill{height:100%;border-radius:2px;transition:width .7s cubic-bezier(.4,0,.2,1)}
+.remove-btn{background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;padding:2px;border-radius:4px;transition:all .2s;line-height:1;opacity:0}
+.srow:hover .remove-btn{opacity:1}
+.remove-btn:hover{color:var(--red);background:rgba(255,94,94,.1)}
+
+/* RIGHT */
 .right{display:flex;flex-direction:column;gap:12px;min-width:0}
+
+/* DETAIL */
 .dcard{background:var(--panel);border:1px solid var(--border);border-radius:var(--r2);padding:22px;position:relative;overflow:hidden;animation:fu .25s ease}
 @keyframes fu{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .dcard::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at top right,rgba(145,71,255,.055),transparent 55%);pointer-events:none}
@@ -139,14 +180,48 @@ tr:last-child td{border-bottom:none}
 tr:hover td{background:rgba(145,71,255,.04)}
 .tnum{font-family:var(--mono);font-size:11px}
 .gtag{font-family:var(--mono);font-size:10px;font-weight:600;padding:2px 6px;border-radius:5px;background:rgba(61,220,132,.12);color:var(--green)}
-.api-tag{font-family:var(--mono);font-size:9px;font-weight:600;padding:1px 5px;border-radius:4px;background:rgba(0,229,195,.12);color:var(--teal);margin-left:4px}
-.est-tag{font-family:var(--mono);font-size:9px;font-weight:600;padding:1px 5px;border-radius:4px;background:rgba(255,203,71,.12);color:var(--gold);margin-left:4px}
+.api-tag{font-family:var(--mono);font-size:9px;font-weight:600;padding:1px 5px;border-radius:4px;background:rgba(0,229,195,.12);color:var(--teal);margin-left:3px}
+.est-tag{font-family:var(--mono);font-size:9px;font-weight:600;padding:1px 5px;border-radius:4px;background:rgba(255,203,71,.12);color:var(--gold);margin-left:3px}
+
+/* POPUP NOTIFICATION */
+.popup-stack{position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+.popup{background:#0e1117;border:1px solid var(--border2);border-radius:14px;padding:16px 18px;min-width:300px;max-width:380px;box-shadow:0 8px 32px rgba(0,0,0,.6);pointer-events:all;animation:popIn .35s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden}
+.popup::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.popup.live-pop::before{background:linear-gradient(90deg,var(--live),#ff8c42)}
+.popup.viewer-pop::before{background:linear-gradient(90deg,var(--gold),var(--teal))}
+@keyframes popIn{from{opacity:0;transform:translateX(60px) scale(.9)}to{opacity:1;transform:translateX(0) scale(1)}}
+.popup-close{position:absolute;top:10px;right:12px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:16px;line-height:1;padding:2px}
+.popup-close:hover{color:var(--text)}
+.popup-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.popup-icon{font-size:22px;flex-shrink:0}
+.popup-title{font-size:14px;font-weight:700}
+.popup-title.live{color:var(--live)}
+.popup-title.viewer{color:var(--gold)}
+.popup-body{font-size:12px;color:var(--muted2);line-height:1.6;margin-bottom:10px}
+.popup-link{display:inline-flex;align-items:center;gap:5px;background:var(--purple);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:7px;text-decoration:none;transition:all .2s}
+.popup-link:hover{background:#7c2ff5}
+.popup-link.lv{background:var(--live)}.popup-link.lv:hover{background:#dc2626}
+.popup-fade{animation:popOut .3s ease forwards}
+@keyframes popOut{to{opacity:0;transform:translateX(60px)}}
+
+/* CONFIRM REMOVE */
+.confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:8888;display:flex;align-items:center;justify-content:center;animation:fadein .2s ease}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.confirm-box{background:var(--panel);border:1px solid var(--border2);border-radius:var(--r2);padding:24px 28px;max-width:360px;text-align:center}
+.confirm-title{font-size:16px;font-weight:700;margin-bottom:8px}
+.confirm-sub{font-size:13px;color:var(--muted2);margin-bottom:20px;line-height:1.6}
+.confirm-btns{display:flex;gap:10px;justify-content:center}
+.confirm-yes{background:var(--red);color:#fff;font-family:var(--sans);font-size:13px;font-weight:700;border:none;padding:8px 22px;border-radius:8px;cursor:pointer}
+.confirm-yes:hover{background:#dc2626}
+.confirm-no{background:var(--panel2);color:var(--muted2);font-family:var(--sans);font-size:13px;font-weight:600;border:1px solid var(--border2);padding:8px 22px;border-radius:8px;cursor:pointer}
+.confirm-no:hover{color:var(--text)}
+
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:#2a2d3a;border-radius:3px}
 ::-webkit-scrollbar-thumb:hover{background:var(--purple)}
 @media(max-width:1100px){.main{grid-template-columns:1fr}.kpi-row{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:700px){.kpi-row{grid-template-columns:repeat(2,1fr)}.charts-row{grid-template-columns:1fr}.mets{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.kpi-row{grid-template-columns:repeat(2,1fr)}.charts-row{grid-template-columns:1fr}.mets{grid-template-columns:repeat(2,1fr)}.toolbar{gap:6px}}
 </style>
 </head>
 <body>
@@ -156,33 +231,60 @@ tr:hover td{background:rgba(145,71,255,.04)}
     <div class="logo-icon">🎮</div>
     <div>
       <div class="logo-text">Twitch <span>DE</span> Live Dashboard</div>
-      <div class="logo-sub">Top 10 deutsche Streamer · Follower live · Abos geschätzt (SullyGnome)</div>
+      <div class="logo-sub">Top deutsche Streamer · Follower live · Historik: SullyGnome/TwitchTracker</div>
     </div>
   </div>
   <div class="topbar-right">
     <div class="status-pill">
       <div class="status-dot loading" id="sDot"></div>
-      <span class="status-txt" id="sTxt">Lade Daten…</span>
+      <span class="status-txt" id="sTxt">Lade…</span>
       <span class="cd-num" id="cd">60</span><span style="color:var(--muted)">s</span>
     </div>
   </div>
 </div>
-<div class="sort-bar">
+
+<!-- YEAR FILTER -->
+<div class="year-bar">
+  <span class="year-label">JAHR:</span>
+  <button class="year-btn" onclick="setYear(2024,this)">2024</button>
+  <button class="year-btn active" onclick="setYear(2025,this)">2025</button>
+  <button class="year-btn" onclick="setYear(2026,this)">2026</button>
+  <span class="year-note" id="yearNote">Daten: SullyGnome / TwitchTracker</span>
+</div>
+
+<!-- THRESHOLD BAR -->
+<div class="threshold-bar" style="margin-top:12px">
+  <span class="threshold-label">🔔 Zuschauer-Alarm:</span>
+  <input type="number" class="threshold-input" id="threshInput" placeholder="z.B. 50000" min="0" max="250000" oninput="syncSlider()">
+  <input type="range" class="threshold-slider" id="threshSlider" min="0" max="250000" step="1000" value="50000" oninput="syncInput()">
+  <span class="threshold-val" id="threshVal">50k</span>
+  <button class="threshold-toggle" id="threshToggle" onclick="toggleThreshold()">Aktivieren</button>
+</div>
+
+<!-- TOOLBAR: SORT + ADD -->
+<div class="toolbar">
   <button class="sort-btn active" onclick="setSort('followers',this)">👥 Follower</button>
-  <button class="sort-btn" onclick="setSort('growth',this)">📈 Zuwachs 2024</button>
-  <button class="sort-btn" onclick="setSort('subscribers',this)">💜 Abonnenten</button>
+  <button class="sort-btn" onclick="setSort('growth',this)">📈 Zuwachs</button>
+  <button class="sort-btn" onclick="setSort('subscribers',this)">💜 Abos</button>
   <button class="sort-btn" onclick="setSort('avgViewers',this)">👁 Ø Zuschauer</button>
   <button class="sort-btn" onclick="setSort('peakViewers',this)">🔥 Peak</button>
   <button class="sort-btn" onclick="setSort('hoursStreamed',this)">⏱ Streamzeit</button>
   <button class="sort-btn" onclick="setSort('watchtime',this)">⌚ Watchtime</button>
+  <div class="toolbar-sep"></div>
+  <input type="text" class="add-input" id="addInput" placeholder="Kanalname…" onkeydown="if(event.key==='Enter')addStreamer()">
+  <button class="add-btn" id="addBtn" onclick="addStreamer()">+ Streamer hinzufügen</button>
 </div>
+
+<!-- KPI ROW -->
 <div class="kpi-row">
-  <div class="kpi"><div class="kpi-l">🔴 Jetzt LIVE</div><div class="kpi-v lv" id="kLive">–</div><div class="kpi-s">von 10 Streamern</div></div>
+  <div class="kpi"><div class="kpi-l">🔴 Jetzt LIVE</div><div class="kpi-v lv" id="kLive">–</div><div class="kpi-s">von <span id="kTotal">–</span> Streamern</div></div>
   <div class="kpi"><div class="kpi-l">Live-Zuschauer</div><div class="kpi-v teal" id="kViews">–</div><div class="kpi-s">gerade gesamt</div></div>
-  <div class="kpi"><div class="kpi-l">Gesamt Follower</div><div class="kpi-v purple" id="kFollowers">–</div><div class="kpi-s">Top 10 · live API</div></div>
-  <div class="kpi"><div class="kpi-l">Ø Abonnenten</div><div class="kpi-v gold" id="kSubs">–</div><div class="kpi-s">Schätzwert</div></div>
+  <div class="kpi"><div class="kpi-l">Gesamt Follower</div><div class="kpi-v purple" id="kFollowers">–</div><div class="kpi-s">alle Kanäle · live</div></div>
+  <div class="kpi"><div class="kpi-l">Ges. Abonnenten</div><div class="kpi-v gold" id="kSubs">–</div><div class="kpi-s">~Schätzwert</div></div>
   <div class="kpi"><div class="kpi-l">API Status</div><div class="kpi-v teal" id="kApi">–</div><div class="kpi-s" id="kApiSub">Verbinde…</div></div>
 </div>
+
+<!-- MAIN -->
 <div class="main">
   <div class="list-panel">
     <div class="list-head">
@@ -194,126 +296,337 @@ tr:hover td{background:rgba(145,71,255,.04)}
   <div class="right">
     <div id="dCard"></div>
     <div class="charts-row">
-      <div class="ccard"><div class="ctitle">Follower <span class="api-tag">LIVE API</span></div><div style="position:relative;height:200px"><canvas id="cF"></canvas></div></div>
+      <div class="ccard"><div class="ctitle">Follower <span class="api-tag">LIVE</span></div><div style="position:relative;height:200px"><canvas id="cF"></canvas></div></div>
       <div class="ccard"><div class="ctitle">Ø Zuschauer vs. Peak</div><div style="position:relative;height:200px"><canvas id="cV"></canvas></div></div>
     </div>
     <div class="charts-row">
-      <div class="ccard"><div class="ctitle">Follower-Zuwachs 2024</div><div style="position:relative;height:185px"><canvas id="cG"></canvas></div></div>
-      <div class="ccard"><div class="ctitle">Streamzeit 2024</div><div style="position:relative;height:185px"><canvas id="cS"></canvas></div></div>
+      <div class="ccard"><div class="ctitle">Follower-Zuwachs <span id="chartYearG"></span></div><div style="position:relative;height:185px"><canvas id="cG"></canvas></div></div>
+      <div class="ccard"><div class="ctitle">Streamzeit <span id="chartYearS"></span>(h)</div><div style="position:relative;height:185px"><canvas id="cS"></canvas></div></div>
     </div>
     <div class="tcard">
-      <div class="ctitle">Vollständige Kennzahlen · Follower <span class="api-tag">live</span> · Abos <span class="est-tag">~Schätzung</span></div>
+      <div class="ctitle">Vollständige Kennzahlen · Follower <span class="api-tag">live</span> · Abos <span class="est-tag">~est.</span></div>
       <div style="overflow-x:auto">
-        <table><thead><tr>
-          <th>#</th><th>Streamer</th><th>Follower</th><th>Zuwachs</th>
-          <th>Ø Zuschauer</th><th>Peak</th><th>Abos ~</th><th>Stream h</th><th>Watchtime</th><th>🔴 Live</th>
-        </tr></thead><tbody id="tBody"></tbody></table>
+        <table><thead><tr><th>#</th><th>Streamer</th><th>Follower</th><th>Zuwachs</th><th>Ø Zuschauer</th><th>Peak</th><th>Abos ~</th><th>Stream h</th><th>Watchtime</th><th>🔴 Live</th></tr></thead>
+        <tbody id="tBody"></tbody></table>
       </div>
     </div>
   </div>
 </div>
 </div>
+
+<!-- POPUP STACK -->
+<div class="popup-stack" id="popupStack"></div>
+
 <script>
 const PROXY = '/api/twitch';
-const CHANNELS = ['montanablack88','trymacs','papaplatte','eliasn97','bastighg','therealknossi','gronkh','zarbex','handofblood','rewinside'];
 
-// Abonnenten: Schätzwerte von SullyGnome/TwitchTracker (Twitch API gibt diese nicht öffentlich frei)
-const BASE = {
-  montanablack88: {name:'MontanaBlack',real:'Marcel Eris, 36',em:'🖤',bg:'#1a1010',c:'#ff5e5e',cat:'Just Chatting / IRL',since:2013,followers:5720000,growth:180000,subscribers:12000,avgViewers:22000,peakViewers:257202,hoursStreamed:890,watchtime:50,tags:['Partner','IRL'],tcl:['bdg-p','bdg-t'],desc:'Marcel Eris ist das Gesicht des deutschen Twitch. Am 22. Dez. 2024 stellte er mit 257.202 gleichzeitigen Zuschauern seinen Kanalrekord auf. Gründer der Energie-Drink-Marke Gönrgy.',mo:[14000,15000,18000,20000,19000,22000,24000,28000,21000,25000,30000,45000],pk:'22. Dez 2024'},
-  trymacs:        {name:'Trymacs',real:'Max Stemmler, 28',em:'🏆',bg:'#101a10',c:'#3ddc84',cat:'Gaming / Events',since:2016,followers:4100000,growth:320000,subscribers:15000,avgViewers:19000,peakViewers:700000,hoursStreamed:1400,watchtime:95,tags:['Partner','Gaming'],tcl:['bdg-p','bdg-t'],desc:'Hält den deutschen Allzeit-Peak-Rekord: Ein Minecraft-Event 2024 zog über 700.000 gleichzeitige Zuschauer an. Mitgründer von Happy Slice Pizza und Lanch.',mo:[12000,13000,16000,18000,22000,30000,25000,18000,19000,21000,23000,28000],pk:'Minecraft-Event'},
-  papaplatte:     {name:'Papaplatte',real:'Kevin Teller, 27',em:'🚐',bg:'#101420',c:'#9147ff',cat:'IRL / Just Chatting',since:2013,followers:3100000,growth:350000,subscribers:33912,avgViewers:30000,peakViewers:301000,hoursStreamed:1800,watchtime:130,tags:['Partner','#1 Abos'],tcl:['bdg-p','bdg-g'],desc:'Meistabonnierter deutscher Streamer (33.912 Abos, Aug 2024). Watchtime ≈130 Mio. Std. 2024. Bekannt für die "Edeltour" im Wohnmobil.',mo:[18000,22000,28000,32000,35000,38000,40000,36000,31000,28000,30000,34000],pk:'Edeltour-Event'},
-  eliasn97:       {name:'EliasN97',real:'Elias Nerlich, 27',em:'⚽',bg:'#0a1420',c:'#57c8ff',cat:'FIFA / Fußball',since:2018,followers:2800000,growth:1300000,subscribers:28000,avgViewers:37500,peakViewers:208614,hoursStreamed:1480,watchtime:140,tags:['Partner','E-Sport'],tcl:['bdg-p','bdg-t'],desc:'Höchste Watchtime aller DE-Streamer 2024 (≈140 Mio. Std.) und größter Follower-Zuwachs: +1,3 Mio. Ex-FIFA-Profi, heute Unternehmer.',mo:[28000,30000,33000,40000,42000,38000,45000,50000,46000,35000,32000,38000],pk:'Dez. 2024'},
-  bastighg:       {name:'BastiGHG',real:'Basti G., 27',em:'⛏️',bg:'#101a14',c:'#00e5c3',cat:'Minecraft / Gaming',since:2019,followers:2400000,growth:280000,subscribers:18000,avgViewers:14000,peakViewers:88507,hoursStreamed:1550,watchtime:55,tags:['Partner','Minecraft'],tcl:['bdg-p','bdg-n'],desc:'1.550+ Streamstunden 2024. Persönlicher Rekord: 88.507 Zuschauer bei den Stream Awards im Dezember 2024.',mo:[8000,9000,11000,13000,15000,16000,18000,16000,13000,12000,14000,16000],pk:'Stream Awards'},
-  therealknossi:  {name:'Knossi',real:'Jens Knossalla, 38',em:'👑',bg:'#201a00',c:'#ffcb47',cat:'Talk / IRL / Events',since:2014,followers:2200000,growth:90000,subscribers:10000,avgViewers:14769,peakViewers:336000,hoursStreamed:680,watchtime:36,tags:['Partner','TV-Star'],tcl:['bdg-p','bdg-g'],desc:'Der "König des Internets" – war 2020 kurzzeitig Twitch #1 weltweit. Horror-Kamp Rekord: 336.000 Zuschauer. Mitgründer Happy Slice Pizza.',mo:[10000,11000,13000,15000,18000,14000,12000,13000,14000,16000,15000,17000],pk:'Horror-Kamp'},
-  gronkh:         {name:'Gronkh',real:'Erik Range, 45',em:'🎭',bg:'#1a100a',c:'#ff8c42',cat:"Gaming / Let's Play",since:2010,followers:1900000,growth:50000,subscribers:7500,avgViewers:18993,peakViewers:62000,hoursStreamed:1100,watchtime:42,tags:['Partner','Legende'],tcl:['bdg-p','bdg-g'],desc:'Streaming-Legende: 2014–2016 meistabonnierter YouTuber Deutschlands. 2024 mehr Zuschauer als der offizielle Computerspielpreis-Stream.',mo:[15000,16000,18000,22000,20000,19000,18000,17000,19000,21000,20000,22000],pk:'Computerspielpreis'},
-  zarbex:         {name:'Zarbex',real:'Dominic Z., ~25',em:'🌍',bg:'#0a1a18',c:'#4ade80',cat:'IRL / Travel',since:2020,followers:1200000,growth:550000,subscribers:8500,avgViewers:13000,peakViewers:59000,hoursStreamed:2100,watchtime:30,tags:['Partner','Newcomer 2024'],tcl:['bdg-p','bdg-n'],desc:'Großer Durchbruch 2024: +550k Follower. Mit 2.100 Streamstunden aktivster Streamer der deutschen Top 10.',mo:[2000,3000,5000,8000,11000,14000,16000,15000,12000,13000,14000,15000],pk:'IRL-Event'},
-  handofblood:    {name:'HandOfBlood',real:'Max Knabe, 34',em:'🩸',bg:'#200a0a',c:'#ff6bcd',cat:'Gaming / Talk',since:2016,followers:1650000,growth:120000,subscribers:11000,avgViewers:16000,peakViewers:95000,hoursStreamed:1200,watchtime:42,tags:['Partner','Gaming'],tcl:['bdg-p','bdg-t'],desc:'Bekannt für League of Legends. 2024 starkes Wachstum. Produziert auch Content für ServusTV.',mo:[10000,11000,13000,16000,18000,20000,19000,17000,15000,16000,17000,18000],pk:'LoL-Turnier'},
-  rewinside:      {name:'Rewinside',real:'Sebastian M., 32',em:'🎬',bg:'#100a1a',c:'#bf94ff',cat:'Gaming / Challenges',since:2015,followers:1800000,growth:75000,subscribers:6000,avgViewers:9500,peakViewers:55000,hoursStreamed:2000,watchtime:26,tags:['Partner','Marathon'],tcl:['bdg-p','bdg-g'],desc:'Bekannt für 72h-Stream-Marathons 2024. Neben Twitch erfolgreicher YouTuber.',mo:[8000,9000,10000,10500,11000,12000,11500,10000,9500,9000,9500,10000],pk:'72h Marathon'},
+// ── HISTORIK-DATEN (SullyGnome/TwitchTracker) ─────────────────
+// Jeder Eintrag hat Daten für 2024, 2025, 2026
+const HISTORY = {
+  montanablack88: {
+    2024:{growth:180000,avgViewers:22000,peakViewers:257202,hoursStreamed:890, watchtime:50, subscribers:12000, mo:[14000,15000,18000,20000,19000,22000,24000,28000,21000,25000,30000,45000]},
+    2025:{growth:230000,avgViewers:16831, peakViewers:319000,hoursStreamed:953, watchtime:22, subscribers:11000, mo:[18000,20000,15000,12000,14000,16000,18000,20000,14000,12000,15000,38000]},
+    2026:{growth:null,  avgViewers:16831, peakViewers:371076,hoursStreamed:null,watchtime:null,subscribers:10500, mo:[16000,17000,15000,16000,18000,null,null,null,null,null,null,null]},
+  },
+  trymacs: {
+    2024:{growth:320000,avgViewers:19000,peakViewers:700000,hoursStreamed:1400,watchtime:95, subscribers:15000, mo:[12000,13000,16000,18000,22000,30000,25000,18000,19000,21000,23000,28000]},
+    2025:{growth:280000,avgViewers:21000,peakViewers:650000,hoursStreamed:1350,watchtime:82, subscribers:14000, mo:[16000,18000,22000,20000,19000,24000,28000,22000,20000,18000,22000,30000]},
+    2026:{growth:null,  avgViewers:19000,peakViewers:null,   hoursStreamed:null,watchtime:null,subscribers:13500, mo:[18000,20000,22000,19000,21000,null,null,null,null,null,null,null]},
+  },
+  papaplatte: {
+    2024:{growth:350000,avgViewers:30000,peakViewers:301000,hoursStreamed:1800,watchtime:130,subscribers:33912, mo:[18000,22000,28000,32000,35000,38000,40000,36000,31000,28000,30000,34000]},
+    2025:{growth:350000,avgViewers:28000,peakViewers:120000,hoursStreamed:1600,watchtime:55, subscribers:30000, mo:[24000,26000,30000,28000,32000,35000,30000,28000,26000,24000,28000,32000]},
+    2026:{growth:null,  avgViewers:29000,peakViewers:null,   hoursStreamed:null,watchtime:null,subscribers:29000, mo:[26000,28000,30000,29000,31000,null,null,null,null,null,null,null]},
+  },
+  eliasn97: {
+    2024:{growth:1300000,avgViewers:37500,peakViewers:208614,hoursStreamed:1480,watchtime:140,subscribers:28000, mo:[28000,30000,33000,40000,42000,38000,45000,50000,46000,35000,32000,38000]},
+    2025:{growth:190000, avgViewers:32855,peakViewers:200000,hoursStreamed:1520,watchtime:70, subscribers:26000, mo:[30000,32000,35000,38000,40000,36000,42000,45000,38000,28000,30000,35000]},
+    2026:{growth:null,   avgViewers:32000,peakViewers:null,   hoursStreamed:null,watchtime:null,subscribers:25000, mo:[32000,34000,36000,33000,35000,null,null,null,null,null,null,null]},
+  },
+  bastighg: {
+    2024:{growth:280000,avgViewers:14000,peakViewers:88507, hoursStreamed:1550,watchtime:55, subscribers:18000, mo:[8000,9000,11000,13000,15000,16000,18000,16000,13000,12000,14000,16000]},
+    2025:{growth:220000,avgViewers:15000,peakViewers:95000, hoursStreamed:1480,watchtime:22, subscribers:17000, mo:[12000,13000,15000,16000,18000,17000,16000,14000,13000,14000,16000,18000]},
+    2026:{growth:null,  avgViewers:14500,peakViewers:null,   hoursStreamed:null,watchtime:null,subscribers:16500, mo:[14000,15000,16000,15000,17000,null,null,null,null,null,null,null]},
+  },
+  therealknossi: {
+    2024:{growth:90000, avgViewers:14769,peakViewers:336000,hoursStreamed:680, watchtime:36, subscribers:10000, mo:[10000,11000,13000,15000,18000,14000,12000,13000,14000,16000,15000,17000]},
+    2025:{growth:120000,avgViewers:15000,peakViewers:340000,hoursStreamed:720, watchtime:38, subscribers:10500, mo:[12000,13000,14000,15000,18000,16000,14000,15000,16000,43500,18000,20000]},
+    2026:{growth:null,  avgViewers:14000,peakViewers:null,   hoursStreamed:null,watchtime:null,subscribers:10000, mo:[14000,15000,16000,14000,16000,null,null,null,null,null,null,null]},
+  },
+  gronkh: {
+    2024:{growth:50000, avgViewers:18993,peakViewers:62000, hoursStreamed:1100,watchtime:42, subscribers:7500,  mo:[15000,16000,18000,22000,20000,19000,18000,17000,19000,21000,20000,22000]},
+    2025:{growth:60000, avgViewers:20000,peakViewers:84000, hoursStreamed:1050,watchtime:20, subscribers:7800,  mo:[16000,17000,19000,21000,22000,20000,19000,18000,20000,22000,21000,24000]},
+    2026:{growth:null,  avgViewers:19000,peakViewers:null,   hoursStreamed:null,watchtime:null,subscribers:7500,  mo:[18000,19000,20000,19000,21000,null,null,null,null,null,null,null]},
+  },
+  zarbex: {
+    2024:{growth:550000,avgViewers:13000,peakViewers:59000, hoursStreamed:2100,watchtime:30, subscribers:8500,  mo:[2000,3000,5000,8000,11000,14000,16000,15000,12000,13000,14000,15000]},
+    2025:{growth:500000,avgViewers:14000,peakViewers:59000, hoursStreamed:2200,watchtime:30, subscribers:9500,  mo:[12000,13000,14000,15000,16000,15000,14000,13000,14000,15000,16000,18000]},
+    2026:{growth:null,  avgViewers:14000,peakViewers:null,   hoursStreamed:null,watchtime:null,subscribers:9000,  mo:[14000,15000,16000,15000,16000,null,null,null,null,null,null,null]},
+  },
+  handofblood: {
+    2024:{growth:120000,avgViewers:16000,peakViewers:95000, hoursStreamed:1200,watchtime:42, subscribers:11000, mo:[10000,11000,13000,16000,18000,20000,19000,17000,15000,16000,17000,18000]},
+    2025:{growth:150000,avgViewers:17000,peakViewers:110000,hoursStreamed:1600,watchtime:18.5,subscribers:12000, mo:[14000,15000,17000,18000,20000,19000,17000,16000,15000,17000,18000,20000]},
+    2026:{growth:null,  avgViewers:16500,peakViewers:null,   hoursStreamed:null,watchtime:null,subscribers:11500, mo:[16000,17000,18000,17000,19000,null,null,null,null,null,null,null]},
+  },
+  rewinside: {
+    2024:{growth:75000, avgViewers:9500, peakViewers:55000, hoursStreamed:2000,watchtime:26, subscribers:6000,  mo:[8000,9000,10000,10500,11000,12000,11500,10000,9500,9000,9500,10000]},
+    2025:{growth:80000, avgViewers:10000,peakViewers:60000, hoursStreamed:1900,watchtime:24, subscribers:6500,  mo:[9000,9500,10000,10500,11000,11500,11000,10500,10000,9500,10000,11000]},
+    2026:{growth:null,  avgViewers:9800, peakViewers:null,   hoursStreamed:null,watchtime:null,subscribers:6200,  mo:[9500,10000,10500,10000,11000,null,null,null,null,null,null,null]},
+  },
 };
 
-let sortKey='followers',selIdx=0,sorted=[],liveMap={},apiFollowers={},mini=null,C1,C2,C3,C4,cdVal=60,apiMode=false;
-const fmt=n=>n>=1e6?(n/1e6).toFixed(2)+'M':n>=1e3?(n/1e3).toFixed(1)+'k':String(n);
-const fmtH=h=>h>=1000?(h/1000).toFixed(1)+'k h':h+' h';
+// Basis-Info (unveränderlich)
+const BASE_INFO = {
+  montanablack88:{name:'MontanaBlack',real:'Marcel Eris, 38',em:'🖤',bg:'#1a1010',c:'#ff5e5e',cat:'Just Chatting / IRL',since:2013,tags:['Partner','IRL'],tcl:['bdg-p','bdg-t'],desc:'Marcel Eris ist das Gesicht des deutschen Twitch. Weihnachts-Event 2025 mit 319.000 Zuschauern – neuer Kanalrekord. Trotz weniger Streamzeit (953h in 2025) bleibt er einer der meistgesehenen deutschen Streamer. Gründer der Energie-Drink-Marke Gönrgy.'},
+  trymacs:       {name:'Trymacs',real:'Max Stemmler, 28',em:'🏆',bg:'#101a10',c:'#3ddc84',cat:'Gaming / Events',since:2016,tags:['Partner','Gaming'],tcl:['bdg-p','bdg-t'],desc:'Hält den deutschen Allzeit-Peak-Rekord mit über 700.000 Zuschauern beim Minecraft-Event 2024. Mitgründer von Happy Slice Pizza und Lanch. Konstant starke Events und Gaming-Content.'},
+  papaplatte:    {name:'Papaplatte',real:'Kevin Teller, 27',em:'🚐',bg:'#101420',c:'#9147ff',cat:'IRL / Just Chatting',since:2013,tags:['Partner','#1 Abos'],tcl:['bdg-p','bdg-g'],desc:'Platz 2 der meistgesehenen deutschen Streamer 2025 mit 55 Mio. Watchtime-Stunden. Meistabonnierter DE-Streamer. Bekannt für die "Edeltour" und spontane Community-Interaktion.'},
+  eliasn97:      {name:'EliasN97',real:'Elias Nerlich, 27',em:'⚽',bg:'#0a1420',c:'#57c8ff',cat:'FIFA / Just Chatting',since:2018,tags:['Partner','E-Sport'],tcl:['bdg-p','bdg-t'],desc:'Meistgesehener deutscher Streamer 2024 und 2025 mit ~70 Mio. Watchtime-Stunden. Ø 32.855 Zuschauer in 2025. Ex-FIFA-Profi, heute Unternehmer mit Marken Elevate und eigenem Parfüm.'},
+  bastighg:      {name:'BastiGHG',real:'Basti G., 27',em:'⛏️',bg:'#101a14',c:'#00e5c3',cat:'Minecraft / Gaming',since:2019,tags:['Partner','Minecraft'],tcl:['bdg-p','bdg-n'],desc:'Konstanter Minecraft-Spezialist mit 22 Mio. Watchtime-Stunden in 2025. Wächst mit klarer Positionierung – seine Community geht seit Jahren mit. Gewann Stream Awards 2024.'},
+  therealknossi: {name:'Knossi',real:'Jens Knossalla, 38',em:'👑',bg:'#201a00',c:'#ffcb47',cat:'Talk / IRL / Events',since:2014,tags:['Partner','TV-Star'],tcl:['bdg-p','bdg-g'],desc:'Der "König des Internets" – 2025 mit Knossi Big Brother Event (Ø 43.500 Zuschauer). Peak 340.000 Zuschauer. Mitgründer Happy Slice Pizza. Kult-Streamer mit treuer Fanbase.'},
+  gronkh:        {name:'Gronkh',real:'Erik Range, 45',em:'🎭',bg:'#1a100a',c:'#ff8c42',cat:"Gaming / Let's Play",since:2010,tags:['Partner','Legende'],tcl:['bdg-p','bdg-g'],desc:'Streaming-Legende: seit 2010 auf Twitch. 2025 trotz rückläufiger Streamzeit noch 20 Mio. Watchtime-Stunden. Peak 84.000 Zuschauer. Gewann 2025 den Stream Award für besten Gaming-Moment.'},
+  zarbex:        {name:'Zarbex',real:'Dominic Z., ~25',em:'🌍',bg:'#0a1a18',c:'#4ade80',cat:'IRL / Gaming',since:2020,tags:['Partner','Newcomer'],tcl:['bdg-p','bdg-n'],desc:'Stream Awards 2025: Größter Follower-Zuwachs (+500.000). Platz 3 der meistgesehenen DE-Streamer 2025 mit ~30 Mio. Watchtime. Watchtime-Steigerung von 180% gegenüber 2024.'},
+  handofblood:   {name:'HandOfBlood',real:'Max Knabe, 34',em:'🩸',bg:'#200a0a',c:'#ff6bcd',cat:'Gaming / Talk',since:2016,tags:['Partner','Gaming'],tcl:['bdg-p','bdg-t'],desc:'18,5 Mio. Watchtime-Stunden in 2025 bei 1.600 Streamingstunden. Treue Community, bekannt für gesellschaftliche Themen und Gaming. Gewann Stream Awards 2025 für besten WTF-Moment.'},
+  rewinside:     {name:'Rewinside',real:'Sebastian M., 32',em:'🎬',bg:'#100a1a',c:'#bf94ff',cat:'Gaming / Challenges',since:2015,tags:['Partner','Marathon'],tcl:['bdg-p','bdg-g'],desc:'Bekannt für 72h-Stream-Marathons. Konstante Präsenz 2025 mit ~1.900 Streamstunden. Neben Twitch erfolgreicher YouTuber mit treuer Gaming-Community.'},
+};
+
+// ── STATE ─────────────────────────────────────────────────────
+let CHANNELS = JSON.parse(localStorage.getItem('twitch_channels')||'null') ||
+  ['montanablack88','trymacs','papaplatte','eliasn97','bastighg','therealknossi','gronkh','zarbex','handofblood','rewinside'];
+let customBase = JSON.parse(localStorage.getItem('twitch_custom')||'{}');
+let sortKey='followers', selIdx=0, sorted=[], liveMap={}, apiFollowers={};
+let mini=null, C1,C2,C3,C4, cdVal=60, apiMode=false;
+let activeYear=2025;
+let prevLive={};
+let thresholdActive=false, thresholdValue=50000, thresholdFired={};
+
+const fmt=n=>{if(n==null)return'–';return n>=1e6?(n/1e6).toFixed(2)+'M':n>=1e3?(n/1e3).toFixed(1)+'k':String(n);};
+const fmtH=h=>h==null?'–':h>=1000?(h/1000).toFixed(1)+'k h':h+' h';
 const SVG=`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>`;
 
-function setStatus(s,t){document.getElementById('sDot').className='status-dot '+s;document.getElementById('sTxt').innerHTML=t;}
-function getFollowers(id){return apiFollowers[id]??BASE[id]?.followers??0;}
-function getSubscribers(id){return BASE[id]?.subscribers??0;} // immer Schätzwert
+function saveChannels(){localStorage.setItem('twitch_channels',JSON.stringify(CHANNELS));localStorage.setItem('twitch_custom',JSON.stringify(customBase));}
+function getBase(id){return BASE_INFO[id]||customBase[id]||{name:id,real:'Unbekannt',em:'🎮',bg:'#1a1a2a',c:'#9147ff',cat:'Twitch',since:2020,tags:['Neu'],tcl:['bdg-p'],desc:'Neu hinzugefügter Streamer.'};}
+function getHist(id){const h=HISTORY[id]?.[activeYear]||customBase[id]?.hist?.[activeYear]||{};return h;}
+function getFollowers(id){return apiFollowers[id]??getHist(id)?.followers??getBase(id)?.followers??0;}
+function getSortVal(id,key){
+  const h=getHist(id);
+  if(key==='followers')return getFollowers(id);
+  if(key==='growth')return h.growth??0;
+  if(key==='subscribers')return h.subscribers??0;
+  if(key==='avgViewers')return h.avgViewers??0;
+  if(key==='peakViewers')return h.peakViewers??0;
+  if(key==='hoursStreamed')return h.hoursStreamed??0;
+  if(key==='watchtime')return h.watchtime??0;
+  return 0;
+}
 
+function setStatus(s,t){document.getElementById('sDot').className='status-dot '+s;document.getElementById('sTxt').innerHTML=t;}
+
+// ── YEAR ──────────────────────────────────────────────────────
+function setYear(y,btn){
+  activeYear=y;
+  document.querySelectorAll('.year-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const notes={2024:'Daten: SullyGnome / TwitchTracker',2025:'Daten: SullyGnome / TwitchTracker',2026:'⚠ 2026: nur Jan–Jun verfügbar, Rest = –'};
+  document.getElementById('yearNote').textContent=notes[y]||'';
+  document.getElementById('chartYearG').textContent=y;
+  document.getElementById('chartYearS').textContent=y+' ';
+  doSort(); renderList(); renderDetail(); renderCharts();
+}
+
+// ── THRESHOLD ─────────────────────────────────────────────────
+function syncSlider(){const v=parseInt(document.getElementById('threshInput').value)||0;document.getElementById('threshSlider').value=v;thresholdValue=v;document.getElementById('threshVal').textContent=fmt(v);}
+function syncInput(){const v=parseInt(document.getElementById('threshSlider').value)||0;document.getElementById('threshInput').value=v;thresholdValue=v;document.getElementById('threshVal').textContent=fmt(v);}
+function toggleThreshold(){
+  thresholdActive=!thresholdActive;
+  const btn=document.getElementById('threshToggle');
+  btn.textContent=thresholdActive?'✓ Aktiv':'Aktivieren';
+  btn.className='threshold-toggle'+(thresholdActive?' on':'');
+  if(thresholdActive){thresholdFired={};}
+}
+document.getElementById('threshInput').value=50000;
+document.getElementById('threshSlider').value=50000;
+
+// ── ADD STREAMER ──────────────────────────────────────────────
+async function addStreamer(){
+  const input=document.getElementById('addInput');
+  const id=input.value.trim().toLowerCase();
+  if(!id)return;
+  if(CHANNELS.includes(id)){showPopup('info','ℹ️',`${id} bereits in der Liste`,'','');input.value='';return;}
+  const btn=document.getElementById('addBtn');
+  btn.disabled=true;btn.textContent='Lade…';
+  try{
+    const r=await fetch(`${PROXY}?endpoint=users&login=${id}`,{signal:AbortSignal.timeout(8000)});
+    const j=await r.json();
+    if(!j.data||!j.data[0]) throw new Error('Nicht gefunden');
+    const u=j.data[0];
+    customBase[id]={
+      name:u.display_name,real:u.display_name,
+      em:'🎮',bg:'#1a1a2a',c:'#9147ff',
+      cat:u.broadcaster_type||'Streamer',
+      since:new Date(u.created_at).getFullYear(),
+      tags:['Neu'],tcl:['bdg-p'],
+      desc:`${u.display_name} wurde manuell hinzugefügt. Beschreibung: ${u.description||'–'}`,
+      hist:{2024:{},2025:{},2026:{}}
+    };
+    CHANNELS.push(id);
+    liveMap[id]={on:false,v:0,title:'',game:''};
+    saveChannels();
+    await loadAllData();
+    input.value='';
+    showPopup('info','✅',`${u.display_name} hinzugefügt!`,`Kanal erfolgreich zur Liste hinzugefügt.`,'',id);
+  }catch(e){
+    showPopup('info','❌',`Nicht gefunden`,`Kanalname "${id}" nicht gefunden. Bitte prüfen.`,'','');
+  }
+  btn.disabled=false;btn.textContent='+ Streamer hinzufügen';
+}
+
+// ── REMOVE STREAMER ───────────────────────────────────────────
+function removeStreamer(id){
+  const b=getBase(id);
+  const overlay=document.createElement('div');
+  overlay.className='confirm-overlay';
+  overlay.innerHTML=`<div class="confirm-box">
+    <div class="confirm-title">${b.em} ${b.name} entfernen?</div>
+    <div class="confirm-sub">Der Streamer wird aus dem Dashboard entfernt.<br>Du kannst ihn jederzeit wieder hinzufügen.</div>
+    <div class="confirm-btns">
+      <button class="confirm-yes" onclick="confirmRemove('${id}')">Ja, entfernen</button>
+      <button class="confirm-no" onclick="this.closest('.confirm-overlay').remove()">Abbrechen</button>
+    </div>
+  </div>`;
+  document.body.appendChild(overlay);
+}
+function confirmRemove(id){
+  document.querySelector('.confirm-overlay')?.remove();
+  CHANNELS=CHANNELS.filter(c=>c!==id);
+  if(customBase[id])delete customBase[id];
+  delete liveMap[id]; delete apiFollowers[id]; delete thresholdFired[id];
+  saveChannels();
+  selIdx=0; doSort(); renderList(); renderDetail(); renderCharts(); updKPIs();
+}
+
+// ── LIVE API ──────────────────────────────────────────────────
 async function loadAllData(){
   setStatus('loading','Lade Live-Daten…');
   try{
-    // User IDs
     const logins=CHANNELS.map(c=>`login=${c}`).join('&');
     const ur=await fetch(`${PROXY}?endpoint=users&${logins}`,{signal:AbortSignal.timeout(8000)});
     if(!ur.ok) throw new Error('HTTP '+ur.status);
     const uj=await ur.json();
-    const userIds={};
-    (uj.data||[]).forEach(u=>{userIds[u.login.toLowerCase()]=u.id;});
-
-    // Follower für alle parallel
+    const uids={};
+    (uj.data||[]).forEach(u=>{uids[u.login.toLowerCase()]=u.id;});
     await Promise.all(CHANNELS.map(async id=>{
       try{
-        const uid=userIds[id];
-        if(!uid) return;
+        const uid=uids[id]; if(!uid)return;
         const r=await fetch(`${PROXY}?endpoint=channels%2Ffollowers&broadcaster_id=${uid}`,{signal:AbortSignal.timeout(8000)});
         const j=await r.json();
-        if(j.total!=null) apiFollowers[id]=j.total;
+        if(j.total!=null)apiFollowers[id]=j.total;
       }catch(e){}
     }));
-
-    // Streams
     const sl=CHANNELS.map(c=>`user_login=${c}`).join('&');
     const sr=await fetch(`${PROXY}?endpoint=streams&${sl}`,{signal:AbortSignal.timeout(8000)});
     const sj=await sr.json();
-    CHANNELS.forEach(id=>{liveMap[id]={on:false,v:0,title:'',game:''};});
+    const newLive={};
+    CHANNELS.forEach(id=>{newLive[id]={on:false,v:0,title:'',game:''};});
     (sj.data||[]).forEach(s=>{
       const id=s.user_login.toLowerCase();
-      liveMap[id]={on:true,v:s.viewer_count,title:s.title,game:s.game_name};
+      newLive[id]={on:true,v:s.viewer_count,title:s.title,game:s.game_name};
     });
-
+    // Check für Live-Popup
+    CHANNELS.forEach(id=>{
+      const wasLive=prevLive[id]?.on; const isLive=newLive[id]?.on;
+      if(!wasLive&&isLive){
+        const b=getBase(id);
+        showPopup('live',b.em,`${b.name} ist jetzt LIVE!`,
+          `${newLive[id].game?'🎮 '+newLive[id].game+' · ':''}👁 ${fmt(newLive[id].v)} Zuschauer`,
+          `https://www.twitch.tv/${id}`,id,'live-pop');
+      }
+    });
+    // Check Threshold
+    if(thresholdActive&&thresholdValue>0){
+      CHANNELS.forEach(id=>{
+        const v=newLive[id]?.v||0;
+        if(newLive[id]?.on&&v>=thresholdValue&&!thresholdFired[id]){
+          const b=getBase(id);
+          thresholdFired[id]=true;
+          showPopup('viewer',b.em,`${b.name} hat ${fmt(thresholdValue)}+ Zuschauer!`,
+            `Aktuell: 👁 ${fmt(v)} Zuschauer live`,
+            `https://www.twitch.tv/${id}`,id,'viewer-pop');
+        }
+        if(!newLive[id]?.on)thresholdFired[id]=false;
+      });
+    }
+    prevLive=JSON.parse(JSON.stringify(newLive));
+    liveMap=newLive;
     apiMode=true;
-    setStatus('ok',`<strong>✓ Follower live · Abos ~geschätzt</strong> · ${new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}`);
+    setStatus('ok',`<strong>✓ Live</strong> · ${new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}`);
   }catch(err){
     simulateLive();
     apiMode=false;
-    setStatus('err','Proxy-Fehler · <strong>Simulation aktiv</strong>');
+    setStatus('err','Proxy-Fehler · <strong>Simulation</strong>');
   }
-  updKPIs(); doSort(); renderList(); renderDetail(); renderCharts();
+  updKPIs(); doSort(); renderList(); updDetailLive(); renderCharts();
 }
 
 function simulateLive(){
-  const CH={montanablack88:.28,trymacs:.42,papaplatte:.5,eliasn97:.55,bastighg:.62,therealknossi:.3,gronkh:.35,zarbex:.68,handofblood:.4,rewinside:.48};
+  const CH={montanablack88:.22,trymacs:.38,papaplatte:.45,eliasn97:.5,bastighg:.55,therealknossi:.25,gronkh:.3,zarbex:.6,handofblood:.35,rewinside:.42};
   CHANNELS.forEach(id=>{
     const was=liveMap[id]?.on;
     if(was){if(Math.random()<.22)liveMap[id]={on:false,v:0,title:'',game:''};else{const c=liveMap[id].v;liveMap[id].v=Math.max(500,Math.round(c+(Math.random()-.5)*.14*c));}}
-    else{if(Math.random()<(CH[id]||.35)*.3)liveMap[id]={on:true,v:Math.round((BASE[id]?.avgViewers||10000)*(.6+Math.random()*.8)),title:'Stream läuft…',game:'Just Chatting'};else liveMap[id]={on:false,v:0,title:'',game:''};}
+    else{if(Math.random()<(CH[id]||.3)*.3)liveMap[id]={on:true,v:Math.round((getHist(id)?.avgViewers||10000)*(.6+Math.random()*.8)),title:'Stream läuft…',game:'Just Chatting'};else liveMap[id]={on:false,v:0,title:'',game:''};}
   });
 }
 
+// ── POPUPS ────────────────────────────────────────────────────
+function showPopup(type,icon,title,body,link,id,cls='live-pop'){
+  const stack=document.getElementById('popupStack');
+  const el=document.createElement('div');
+  el.className=`popup ${cls}`;
+  const isLive=cls==='live-pop';
+  el.innerHTML=`<button class="popup-close" onclick="closePopup(this)">✕</button>
+    <div class="popup-header">
+      <span class="popup-icon">${icon}</span>
+      <span class="popup-title ${isLive?'live':'viewer'}">${title}</span>
+    </div>
+    <div class="popup-body">${body}</div>
+    ${link?`<a class="popup-link ${isLive?'lv':''}" href="${link}" target="_blank">${SVG} ${isLive?'Jetzt anschauen':'Stream öffnen'}</a>`:''}`;
+  stack.appendChild(el);
+  setTimeout(()=>{el.classList.add('popup-fade');setTimeout(()=>el.remove(),350);},6000);
+}
+function closePopup(btn){const el=btn.closest('.popup');el.classList.add('popup-fade');setTimeout(()=>el.remove(),350);}
+
+// ── RENDER ────────────────────────────────────────────────────
 function updKPIs(){
   const ls=CHANNELS.filter(id=>liveMap[id]?.on);
   const totalV=ls.reduce((a,id)=>a+(liveMap[id]?.v||0),0);
   const totalF=CHANNELS.reduce((a,id)=>a+getFollowers(id),0);
-  const avgS=Math.round(CHANNELS.reduce((a,id)=>a+getSubscribers(id),0)/CHANNELS.length);
+  const totalS=CHANNELS.reduce((a,id)=>a+(getHist(id)?.subscribers||0),0);
   document.getElementById('kLive').textContent=ls.length;
+  document.getElementById('kTotal').textContent=CHANNELS.length;
   document.getElementById('kViews').textContent=fmt(totalV);
   document.getElementById('kFollowers').textContent=fmt(totalF);
-  document.getElementById('kSubs').textContent='~'+fmt(avgS);
+  document.getElementById('kSubs').textContent='~'+fmt(totalS);
   document.getElementById('kApi').textContent=apiMode?'✓ Live':'⚠ Sim';
   document.getElementById('kApiSub').textContent=apiMode?'Twitch API aktiv':'Simulation aktiv';
   document.getElementById('liveBadge').textContent=`● ${ls.length} LIVE`;
 }
 
 function setSort(k,btn){sortKey=k;document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');doSort();renderList();renderDetail();renderCharts();}
-function doSort(){sorted=CHANNELS.map(id=>({id,...BASE[id],followers:getFollowers(id),subscribers:getSubscribers(id)})).sort((a,b)=>b[sortKey]-a[sortKey]);}
+function doSort(){sorted=CHANNELS.map(id=>({id,...getBase(id),...getHist(id),followers:getFollowers(id)})).sort((a,b)=>getSortVal(b.id,sortKey)-getSortVal(a.id,sortKey));}
 function sel(i){selIdx=i;renderList();renderDetail();}
 
 function renderList(){
-  const maxV=Math.max(...sorted.map(s=>s[sortKey]||0));
-  const lbs={followers:s=>fmt(s.followers),growth:s=>'+'+fmt(s.growth),subscribers:s=>'~'+fmt(s.subscribers),avgViewers:s=>fmt(s.avgViewers)+' Ø',peakViewers:s=>fmt(s.peakViewers)+' Peak',hoursStreamed:s=>fmtH(s.hoursStreamed),watchtime:s=>s.watchtime+'M h'};
+  const maxV=Math.max(...sorted.map(s=>getSortVal(s.id,sortKey)||0),1);
+  const lbs={
+    followers:id=>fmt(getFollowers(id)),
+    growth:id=>getHist(id)?.growth!=null?'+'+fmt(getHist(id).growth):'–',
+    subscribers:id=>'~'+fmt(getHist(id)?.subscribers),
+    avgViewers:id=>fmt(getHist(id)?.avgViewers)+' Ø',
+    peakViewers:id=>fmt(getHist(id)?.peakViewers)+' Peak',
+    hoursStreamed:id=>fmtH(getHist(id)?.hoursStreamed),
+    watchtime:id=>getHist(id)?.watchtime!=null?getHist(id).watchtime+'M h':'–',
+  };
   document.getElementById('sList').innerHTML=sorted.map((s,i)=>{
-    const pct=maxV?(s[sortKey]/maxV*100).toFixed(1):0;
+    const pct=maxV?(getSortVal(s.id,sortKey)/maxV*100).toFixed(1):0;
     const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';
     const on=liveMap[s.id]?.on; const lv=liveMap[s.id]?.v||0;
     return `<div class="srow${i===selIdx?' active':''}" onclick="sel(${i})">
@@ -324,15 +637,17 @@ function renderList(){
         <div class="stag">${on?'👁 '+fmt(lv)+' Zuschauer':s.cat}</div>
       </div>
       <div class="smet">
-        <div class="sval" style="color:${on?'var(--live)':s.c}">${on?fmt(lv)+' 🔴':lbs[sortKey](s)}</div>
+        <div class="sval" style="color:${on?'var(--live)':s.c}">${on?fmt(lv)+' 🔴':lbs[sortKey](s.id)}</div>
         <div class="sbar"><div class="sbar-fill" style="width:${pct}%;background:${on?'var(--live)':s.c}"></div></div>
       </div>
+      <button class="remove-btn" onclick="event.stopPropagation();removeStreamer('${s.id}')" title="Entfernen">✕</button>
     </div>`;
   }).join('');
 }
 
 function renderDetail(){
   const s=sorted[selIdx]; if(!s) return;
+  const h=getHist(s.id);
   const on=liveMap[s.id]?.on; const lv=liveMap[s.id]?.v||0;
   const tt=liveMap[s.id]?.title||''; const gm=liveMap[s.id]?.game||'';
   const url=`https://www.twitch.tv/${s.id}`;
@@ -367,32 +682,32 @@ function renderDetail(){
         </div>
       </div>
       <div id="eA_${s.id}">
-        <div class="embed-ph">
-          <div class="embed-ph-icon">${on?'🔴':'📺'}</div>
-          <div class="embed-ph-txt">${on?`<strong style="color:var(--live)">${s.name} streamt gerade!</strong><br>Klicke "Player öffnen".`:`<strong>${s.name}</strong> ist offline.<br>Klicke "Player öffnen" für VODs.`}</div>
-        </div>
+        <div class="embed-ph"><div class="embed-ph-icon">${on?'🔴':'📺'}</div>
+        <div class="embed-ph-txt">${on?`<strong style="color:var(--live)">${s.name} streamt gerade!</strong><br>Klicke "Player öffnen".`:`<strong>${s.name}</strong> ist offline.<br>Klicke "Player öffnen" für VODs.`}</div></div>
       </div>
     </div>
     <div class="mets">
-      <div class="met"><div class="met-l">Follower <span class="api-tag">live</span></div><div class="met-v purple">${fmt(s.followers)}</div><div class="met-s">${apiMode?'von Twitch API':'Schätzwert'}</div></div>
-      <div class="met"><div class="met-l">Zuwachs 2024</div><div class="met-v green">+${fmt(s.growth)}</div><div class="met-s">neue Follower</div></div>
-      <div class="met"><div class="met-l">Abonnenten <span class="est-tag">~est.</span></div><div class="met-v gold">~${fmt(s.subscribers)}</div><div class="met-s">SullyGnome Schätzung</div></div>
+      <div class="met"><div class="met-l">Follower <span class="api-tag">live</span></div><div class="met-v purple">${fmt(getFollowers(s.id))}</div><div class="met-s">${apiMode?'Twitch API':'Schätzwert'}</div></div>
+      <div class="met"><div class="met-l">Zuwachs ${activeYear}</div><div class="met-v green">${h.growth!=null?'+'+fmt(h.growth):'–'}</div><div class="met-s">neue Follower</div></div>
+      <div class="met"><div class="met-l">Abonnenten <span class="est-tag">~</span></div><div class="met-v gold">~${fmt(h.subscribers)}</div><div class="met-s">Schätzung</div></div>
       <div class="met"><div class="met-l">🔴 Live jetzt</div><div class="met-v${on?' lv':' red'}" id="mLive">${on?fmt(lv):'—'}</div><div class="met-s">${on?'Zuschauer':'offline'}</div></div>
-      <div class="met"><div class="met-l">Ø Zuschauer</div><div class="met-v teal">${fmt(s.avgViewers)}</div><div class="met-s">2024 Schnitt</div></div>
-      <div class="met"><div class="met-l">Peak Viewer</div><div class="met-v red">${fmt(s.peakViewers)}</div><div class="met-s">${s.pk}</div></div>
-      <div class="met"><div class="met-l">Streamzeit</div><div class="met-v purple">${fmtH(s.hoursStreamed)}</div><div class="met-s">2024 gesamt</div></div>
-      <div class="met"><div class="met-l">Watchtime</div><div class="met-v gold">${s.watchtime}M h</div><div class="met-s">2024 gesamt</div></div>
+      <div class="met"><div class="met-l">Ø Zuschauer ${activeYear}</div><div class="met-v teal">${fmt(h.avgViewers)}</div><div class="met-s">Durchschnitt</div></div>
+      <div class="met"><div class="met-l">Peak ${activeYear}</div><div class="met-v red">${fmt(h.peakViewers)}</div><div class="met-s">Zuschauer</div></div>
+      <div class="met"><div class="met-l">Streamzeit ${activeYear}</div><div class="met-v purple">${fmtH(h.hoursStreamed)}</div><div class="met-s">gesamt</div></div>
+      <div class="met"><div class="met-l">Watchtime ${activeYear}</div><div class="met-v gold">${h.watchtime!=null?h.watchtime+'M h':'–'}</div><div class="met-s">Mio. Stunden</div></div>
     </div>
     <div class="dcdesc">${s.desc}</div>
-    <div class="mini-title">Ø Zuschauer — Monatsverlauf 2024</div>
+    <div class="mini-title">Ø Zuschauer — Monatsverlauf ${activeYear}</div>
     <div style="position:relative;height:88px"><canvas id="mC"></canvas></div>
   </div>`;
   if(mini)mini.destroy();
-  mini=new Chart(document.getElementById('mC'),{type:'line',data:{labels:['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'],datasets:[{data:s.mo,borderColor:s.c,backgroundColor:s.c+'22',borderWidth:2,pointRadius:3,pointBackgroundColor:s.c,fill:true,tension:.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fmt(ctx.raw)+' Ø'}}},scales:{x:{ticks:{color:'rgba(255,255,255,.28)',font:{size:9}},grid:{display:false},border:{display:false}},y:{ticks:{color:'rgba(255,255,255,.28)',font:{size:9},callback:v=>fmt(v)},grid:{color:'rgba(255,255,255,.05)'},border:{display:false}}}}});
+  const mo=(h.mo||[]).filter(v=>v!=null);
+  const moLabels=['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'].slice(0,mo.length);
+  mini=new Chart(document.getElementById('mC'),{type:'line',data:{labels:moLabels,datasets:[{data:mo,borderColor:s.c,backgroundColor:s.c+'22',borderWidth:2,pointRadius:3,pointBackgroundColor:s.c,fill:true,tension:.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fmt(ctx.raw)+' Ø'}}},scales:{x:{ticks:{color:'rgba(255,255,255,.28)',font:{size:9}},grid:{display:false},border:{display:false}},y:{ticks:{color:'rgba(255,255,255,.28)',font:{size:9},callback:v=>fmt(v)},grid:{color:'rgba(255,255,255,.05)'},border:{display:false}}}}});
 }
 
 function updDetailLive(){
-  const s=sorted[selIdx]; if(!s) return;
+  const s=sorted[selIdx]; if(!s)return;
   const on=liveMap[s.id]?.on; const lv=liveMap[s.id]?.v||0;
   const lb=document.getElementById('lb'); if(lb)lb.className='lbanner'+(on?' on':'');
   const lbv=document.getElementById('lbv'); if(lbv)lbv.textContent=fmt(lv)+' Zuschauer';
@@ -412,37 +727,42 @@ const AX={x:{ticks:{color:'rgba(255,255,255,.27)',font:{size:9}},grid:{display:f
 function renderCharts(){
   const nm=sorted.map(s=>s.name),cl=sorted.map(s=>s.c),ca=sorted.map(s=>s.c+'99');
   if(C1)C1.destroy();if(C2)C2.destroy();if(C3)C3.destroy();if(C4)C4.destroy();
-  C1=new Chart(document.getElementById('cF'),{type:'bar',data:{labels:nm,datasets:[{data:sorted.map(s=>s.followers),backgroundColor:ca,borderColor:cl,borderWidth:1,borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fmt(ctx.raw)+' Follower'}}},scales:{...AX,y:{...AX.y,ticks:{...AX.y.ticks,callback:v=>fmt(v)}}}}});
-  C2=new Chart(document.getElementById('cV'),{type:'bar',data:{labels:nm,datasets:[{label:'Ø',data:sorted.map(s=>s.avgViewers),backgroundColor:ca,borderColor:cl,borderWidth:1,borderRadius:3},{label:'Peak',data:sorted.map(s=>s.peakViewers),type:'line',borderColor:'rgba(255,203,71,.85)',backgroundColor:'rgba(255,203,71,.1)',borderWidth:2,pointRadius:4,pointBackgroundColor:'#ffcb47',fill:false,tension:.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${fmt(ctx.raw)}`}}},scales:{...AX,y:{...AX.y,ticks:{...AX.y.ticks,callback:v=>fmt(v)}}}}});
-  const bg=[...CHANNELS.map(id=>({id,...BASE[id]}))].sort((a,b)=>b.growth-a.growth);
-  C3=new Chart(document.getElementById('cG'),{type:'bar',data:{labels:bg.map(s=>s.name),datasets:[{data:bg.map(s=>s.growth),backgroundColor:bg.map(s=>s.c+'88'),borderColor:bg.map(s=>s.c),borderWidth:1,borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'+'+fmt(ctx.raw)}}},scales:{...AX,y:{...AX.y,ticks:{...AX.y.ticks,callback:v=>'+'+fmt(v)}}}}});
-  const bh=[...CHANNELS.map(id=>({id,...BASE[id]}))].sort((a,b)=>b.hoursStreamed-a.hoursStreamed);
-  C4=new Chart(document.getElementById('cS'),{type:'bar',data:{labels:bh.map(s=>s.name),datasets:[{data:bh.map(s=>s.hoursStreamed),backgroundColor:bh.map(s=>s.c+'77'),borderColor:bh.map(s=>s.c),borderWidth:1,borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.raw+' h'}}},scales:{...AX,y:{...AX.y,ticks:{...AX.y.ticks,callback:v=>v+' h'}}}}});
+  C1=new Chart(document.getElementById('cF'),{type:'bar',data:{labels:nm,datasets:[{data:sorted.map(s=>getFollowers(s.id)),backgroundColor:ca,borderColor:cl,borderWidth:1,borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fmt(ctx.raw)+' Follower'}}},scales:{...AX,y:{...AX.y,ticks:{...AX.y.ticks,callback:v=>fmt(v)}}}}});
+  C2=new Chart(document.getElementById('cV'),{type:'bar',data:{labels:nm,datasets:[{label:'Ø',data:sorted.map(s=>getHist(s.id)?.avgViewers||0),backgroundColor:ca,borderColor:cl,borderWidth:1,borderRadius:3},{label:'Peak',data:sorted.map(s=>getHist(s.id)?.peakViewers||0),type:'line',borderColor:'rgba(255,203,71,.85)',backgroundColor:'rgba(255,203,71,.1)',borderWidth:2,pointRadius:4,pointBackgroundColor:'#ffcb47',fill:false,tension:.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${fmt(ctx.raw)}`}}},scales:{...AX,y:{...AX.y,ticks:{...AX.y.ticks,callback:v=>fmt(v)}}}}});
+  const bg=[...CHANNELS.map(id=>({id,...getBase(id),...getHist(id)}))].sort((a,b)=>(b.growth||0)-(a.growth||0));
+  C3=new Chart(document.getElementById('cG'),{type:'bar',data:{labels:bg.map(s=>getBase(s.id).name),datasets:[{data:bg.map(s=>s.growth||0),backgroundColor:bg.map(s=>getBase(s.id).c+'88'),borderColor:bg.map(s=>getBase(s.id).c),borderWidth:1,borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.raw?'+'+fmt(ctx.raw):'–'}}},scales:{...AX,y:{...AX.y,ticks:{...AX.y.ticks,callback:v=>v?'+'+fmt(v):''}}}}});
+  const bh=[...CHANNELS.map(id=>({id,...getBase(id),...getHist(id)}))].sort((a,b)=>(b.hoursStreamed||0)-(a.hoursStreamed||0));
+  C4=new Chart(document.getElementById('cS'),{type:'bar',data:{labels:bh.map(s=>getBase(s.id).name),datasets:[{data:bh.map(s=>s.hoursStreamed||0),backgroundColor:bh.map(s=>getBase(s.id).c+'77'),borderColor:bh.map(s=>getBase(s.id).c),borderWidth:1,borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.raw?ctx.raw+' h':'–'}}},scales:{...AX,y:{...AX.y,ticks:{...AX.y.ticks,callback:v=>v?v+' h':''}}}}}); 
   renderTable();
 }
 
 function renderTable(){
-  const byF=CHANNELS.map(id=>({id,...BASE[id],followers:getFollowers(id),subscribers:getSubscribers(id)})).sort((a,b)=>b.followers-a.followers);
+  const byF=CHANNELS.map(id=>({id,...getBase(id)})).sort((a,b)=>getFollowers(b.id)-getFollowers(a.id));
   document.getElementById('tBody').innerHTML=byF.map((s,i)=>{
-    const on=liveMap[s.id]?.on; const lv=liveMap[s.id]?.v||0;
-    const gp=s.followers?((s.growth/s.followers)*100).toFixed(1):'–';
+    const h=getHist(s.id); const on=liveMap[s.id]?.on; const lv=liveMap[s.id]?.v||0;
+    const f=getFollowers(s.id); const gp=f&&h.growth?((h.growth/f)*100).toFixed(1):'–';
     return `<tr>
       <td style="color:var(--muted);font-family:var(--mono)">${i+1}</td>
       <td><div style="display:flex;align-items:center;gap:7px"><span>${s.em}</span><span style="font-weight:700;color:${s.c}">${s.name}</span></div></td>
-      <td class="tnum">${fmt(s.followers)}${apiMode?'<span class="api-tag">live</span>':''}</td>
-      <td><span class="gtag">+${fmt(s.growth)}</span> <span style="font-size:10px;color:var(--muted)">+${gp}%</span></td>
-      <td class="tnum">${fmt(s.avgViewers)}</td>
-      <td class="tnum" style="color:var(--red)">${fmt(s.peakViewers)}</td>
-      <td class="tnum" style="color:var(--gold)">~${fmt(s.subscribers)}<span class="est-tag">est.</span></td>
-      <td class="tnum">${fmtH(s.hoursStreamed)}</td>
-      <td class="tnum" style="color:var(--teal)">${s.watchtime}M h</td>
+      <td class="tnum">${fmt(f)}${apiMode?'<span class="api-tag">live</span>':''}</td>
+      <td>${h.growth!=null?`<span class="gtag">+${fmt(h.growth)}</span> <span style="font-size:10px;color:var(--muted)">+${gp}%</span>`:'<span style="color:var(--muted)">–</span>'}</td>
+      <td class="tnum">${fmt(h.avgViewers)}</td>
+      <td class="tnum" style="color:var(--red)">${fmt(h.peakViewers)}</td>
+      <td class="tnum" style="color:var(--gold)">~${fmt(h.subscribers)}</td>
+      <td class="tnum">${fmtH(h.hoursStreamed)}</td>
+      <td class="tnum" style="color:var(--teal)">${h.watchtime!=null?h.watchtime+'M h':'–'}</td>
       <td>${on?`<span style="display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;color:var(--live);font-weight:700"><span style="width:6px;height:6px;border-radius:50%;background:var(--live);display:inline-block;animation:lp 1.3s infinite"></span>${fmt(lv)}</span>`:`<span style="font-size:10px;color:var(--muted)">offline</span>`}</td>
     </tr>`;
   }).join('');
 }
 
+// ── COUNTDOWN ─────────────────────────────────────────────────
 setInterval(()=>{cdVal--;if(cdVal<=0){cdVal=60;loadAllData();}document.getElementById('cd').textContent=cdVal;},1000);
+
+// ── INIT ──────────────────────────────────────────────────────
 CHANNELS.forEach(id=>{liveMap[id]={on:false,v:0,title:'',game:''};});
+document.getElementById('chartYearG').textContent=activeYear;
+document.getElementById('chartYearS').textContent=activeYear+' ';
 doSort(); renderList(); renderDetail(); renderCharts();
 loadAllData();
 </script>
